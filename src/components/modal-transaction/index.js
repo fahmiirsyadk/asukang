@@ -1,14 +1,19 @@
 /** @jsx jsx */
-import React from "react";
+import React, { useState } from "react";
 import { jsx } from "@emotion/core";
 import { useMachine, useService } from "@xstate/react";
-import { transactionStep, transactionForm } from "machines/machines";
+import { transactionStep } from "machines/machines";
 import { overlay, modal, input, buttonFull } from "components/styles";
 import { dataHutang } from "data/dump";
 
 const ModalTransition = ({ state }) => {
   const [current, send] = useMachine(transactionStep);
   const [currentModal, sendModal] = useService(state);
+  const [name, setName] = useState("");
+
+  const filteredName = dataHutang.filter(data =>
+    data.name.toLowerCase().includes(name.toLowerCase())
+  );
 
   return (
     <div css={overlay}>
@@ -17,13 +22,14 @@ const ModalTransition = ({ state }) => {
           <div>
             <input
               type="text"
-              value=""
+              value={name}
+              onChange={e => setName(e.target.value)}
               placeholder="Masukkan nama tujuan"
               css={input}
               autoFocus
             />
             <div>
-              {dataHutang.map(data => (
+              {filteredName.map(data => (
                 <div key={data.id}>
                   <h4>{data.name}</h4>
                   <p>{data.hutang}</p>
@@ -37,12 +43,15 @@ const ModalTransition = ({ state }) => {
         ) : current.matches("two") ? (
           <div>
             two
-            <button onClick={() => send("SUCCESS")}>go three</button>
+            <button css={buttonFull} onClick={() => send("SUCCESS")}>
+              go three
+            </button>
           </div>
         ) : current.matches("success") ? (
           <div>
             done !!!
             <button
+              css={buttonFull}
               onClick={() => {
                 sendModal("INACTIVE");
               }}
