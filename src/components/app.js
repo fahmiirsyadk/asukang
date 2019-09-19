@@ -56,7 +56,7 @@ const App = () => {
     <>
       <Global styles={global} />
       {current.value === "active" ? (
-        <Suspense fallback={<p>loading...</p>}>
+        <Suspense fallback={null}>
           <ModalTransaction state={service} />
         </Suspense>
       ) : null}
