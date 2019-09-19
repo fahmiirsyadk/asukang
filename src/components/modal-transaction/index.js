@@ -16,6 +16,24 @@ const ModalTransition = ({ state }) => {
     data.name.toLowerCase().includes(name.toLowerCase())
   );
 
+  const submitData = e => {
+    e.preventDefault();
+    const data = localStorage.getItem("data");
+
+    if (data) {
+      const parsedData = JSON.parse(data);
+      localStorage.setItem(
+        "data",
+        JSON.stringify([parsedData, { name: name, hutang: 20000 }])
+      );
+    } else {
+      localStorage.setItem(
+        "data",
+        JSON.stringify({ name: name, hutang: 20000 })
+      );
+    }
+  };
+
   return (
     <div css={overlay}>
       <div css={modal}>
@@ -46,7 +64,8 @@ const ModalTransition = ({ state }) => {
             done !!!
             <button
               css={buttonFull}
-              onClick={() => {
+              onClick={e => {
+                submitData(e);
                 sendModal("INACTIVE");
               }}
             >
