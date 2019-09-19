@@ -5,6 +5,7 @@ import { useMachine, useService } from "@xstate/react";
 import { transactionStep } from "machines/machines";
 import { overlay, modal, input, buttonFull } from "components/styles";
 import { dataHutang } from "data/dump";
+import ListName from "./list";
 
 const ModalTransition = ({ state }) => {
   const [current, send] = useMachine(transactionStep);
@@ -28,14 +29,7 @@ const ModalTransition = ({ state }) => {
               css={input}
               autoFocus
             />
-            <div>
-              {filteredName.map(data => (
-                <div key={data.id}>
-                  <h4>{data.name}</h4>
-                  <p>{data.hutang}</p>
-                </div>
-              ))}
-            </div>
+            <ListName filteredName={filteredName} />
             <button css={buttonFull} onClick={() => send("TWO")}>
               go two
             </button>
