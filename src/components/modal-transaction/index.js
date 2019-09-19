@@ -11,10 +11,17 @@ const ModalTransition = ({ state }) => {
   const [current, send] = useMachine(transactionStep);
   const [currentModal, sendModal] = useService(state);
   const [name, setName] = useState("");
+  const [nominal, setNominal] = useState(0);
 
   const filteredName = dataHutang.filter(data =>
     data.name.toLowerCase().includes(name.toLowerCase())
   );
+
+  const onChangeNominal = e => {
+    e.target.validity.valid && e.target.value >= 0
+      ? setNominal(e.target.value)
+      : setNominal("");
+  };
 
   const submitData = e => {
     e.preventDefault();
@@ -54,7 +61,14 @@ const ModalTransition = ({ state }) => {
           </div>
         ) : current.matches("two") ? (
           <div>
-            two
+            <h3>{nominal !== "" ? nominal : 0}</h3>
+            <input
+              type="text"
+              pattern="[0-9]*"
+              onChange={onChangeNominal}
+              value={nominal}
+              autoFocus
+            />
             <button css={buttonFull} onClick={() => send("SUCCESS")}>
               go three
             </button>
