@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { jsx } from "@emotion/core";
 import { aside, nav, activityItem } from "./style";
-import context from "./../../context/context";
+import context from "context/context";
 
 const Activities = () => {
   const data = useContext(context);

@@ -11,7 +11,7 @@ export const overlay = css`
   left: 0;
   right: 0;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,4 +45,25 @@ export const input = css`
     border-color: #5d91ff;
     outline: none;
   }
+`;
+
+export const button = css`
+  min-width: 26px;
+  padding: 10px 15px;
+  border-radius: 3px;
+  background-color: #0fcb4d;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: 600;
+  border: none;
+  &:hover,
+  &:focus {
+    background-color: #18f15f;
+  }
+`;
+
+export const buttonFull = css`
+  ${button};
+  padding: 10px 0;
+  width: 100%;
 `;

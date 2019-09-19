@@ -2,23 +2,9 @@
 import React from "react";
 import { useService } from "@xstate/react";
 import { jsx, css } from "@emotion/core";
-import bg from "./../../assets/images/bg.jpg";
+import bg from "assets/images/bg.jpg";
 import { hero, overlay, heroContent } from "./style";
-
-const button = css`
-  min-width: 26px;
-  padding: 10px 15px;
-  border-radius: 3px;
-  background-color: #0fcb4d;
-  cursor: pointer;
-  font-size: 0.8em;
-  font-weight: 600;
-  border: none;
-  &:hover,
-  &:focus {
-    background-color: #18f15f;
-  }
-`;
+import { button } from "components/styles";
 
 const Hero = ({ state }) => {
   const [current, send] = useService(state);
