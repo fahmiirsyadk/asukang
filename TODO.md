@@ -11,6 +11,7 @@
 - [ ] customHook to interact LocalStorage
 - [ ] add option hutang / piutang
 - [x] store Name data to search name input ( localStorage )
-- [ ] store activities ( localStorage )
+- [x] store activities ( localStorage )
+- [ ] update total hutang dan piutang di dashboard
 - [ ] fixing Context code
 - [x] setup a11y react

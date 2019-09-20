@@ -1,19 +1,18 @@
 /** @jsx jsx */
-import React, { useContext } from "react";
+import React from "react";
 import { jsx } from "@emotion/core";
-import { DataContext } from "context/dataContext";
 import { aside, nav, activityItem } from "./style";
+import useData from "functions/useData";
 
 const Activities = () => {
-  const [state, setState] = useContext(DataContext);
-
+  const { getActivities } = useData();
   return (
     <aside css={aside}>
       <nav css={nav}>
         <h4>Activities</h4>
       </nav>
       <div>
-        {state.dataActivities.map((activity, i) => (
+        {getActivities().map((activity, i) => (
           <div css={activityItem} key={i}>
             <h3>{activity.title}</h3>
             <p>{activity.descriptions}</p>

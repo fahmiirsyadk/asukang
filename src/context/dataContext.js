@@ -1,14 +1,27 @@
 import React, { useState } from "react";
 import { dataActivities, dataHutang } from "data/dump";
 
-const storageData = () => localStorage.getItem("data");
-const storageActivities = () => localStorage.getItem("activities");
+const setStorageData = () => localStorage.setItem("data", JSON.stringify([]));
+const setStorageActivities = () =>
+  localStorage.setItem("activities", JSON.stringify([]));
+const getStorageData = () => JSON.parse(localStorage.getItem("data"));
+const getStorageActivities = () =>
+  JSON.parse(localStorage.getItem("activities"));
 
 const dataRaw = {
   dataActivities: dataActivities,
   dataHutang: dataHutang,
   getData: () => {
-    return storageData() ? JSON.parse(storageData()) : [];
+    if (!getStorageData()) {
+      setStorageData();
+    }
+    return getStorageData();
+  },
+  getActivities: () => {
+    if (!getStorageActivities()) {
+      setStorageActivities();
+    }
+    return getStorageActivities();
   }
 };
 
