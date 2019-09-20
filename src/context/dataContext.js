@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { dataActivities, dataHutang } from "data/dump";
 
+const storageData = () => localStorage.getItem("data");
+const storageActivities = () => localStorage.getItem("activities");
+
 const dataRaw = {
   dataActivities: dataActivities,
   dataHutang: dataHutang,
-  setData: () => {}
+  getData: () => {
+    return storageData() ? JSON.parse(storageData()) : [];
+  }
 };
 
 const DataContext = React.createContext({

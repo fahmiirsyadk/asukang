@@ -10,7 +10,7 @@
 - [ ] setup React Helmet
 - [ ] customHook to interact LocalStorage
 - [ ] add option hutang / piutang
-- [ ] store Name data to search name input ( localStorage )
+- [x] store Name data to search name input ( localStorage )
 - [ ] store activities ( localStorage )
 - [ ] fixing Context code
 - [x] setup a11y react
