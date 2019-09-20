@@ -3,12 +3,15 @@ import { DataContext } from "context/dataContext";
 
 const useData = () => {
   const [state, setState] = useContext(DataContext);
-  const toggle = () => {
+  const toggle = props => {
     setState(state => ({
       ...state,
       dataActivities: [
         ...state.dataActivities,
-        { title: "Aku context boss", descriptions: "halo" }
+        {
+          title: "Hutang",
+          descriptions: `anda berhutang kepada ${props.name} sebesar Rp.${props.hutang}`
+        }
       ]
     }));
   };

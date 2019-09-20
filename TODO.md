@@ -3,9 +3,14 @@
 - [ ] warn piutang to the person
 - [ ] number button & input number
 - [x] done processing and close -> update to local storage
-- [ ] setup local storage
+- [x] setup local storage
 - [ ] intergrate sync with firebase
 - [ ] offline & online sign
 - [ ] update / store firebase data ( not on mount, only when clicked )
 - [ ] setup React Helmet
+- [ ] customHook to interact LocalStorage
+- [ ] add option hutang / piutang
+- [ ] store Name data to search name input ( localStorage )
+- [ ] store activities ( localStorage )
+- [ ] fixing Context code
 - [x] setup a11y react

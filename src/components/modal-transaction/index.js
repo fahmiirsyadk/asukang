@@ -27,21 +27,15 @@ const ModalTransition = ({ state }) => {
 
   const submitData = e => {
     e.preventDefault();
-    toggle();
+    const dataForm = { name: name, hutang: Number(nominal) };
     const data = localStorage.getItem("data");
 
     if (data) {
       const parsedData = JSON.parse(data);
-
-      localStorage.setItem(
-        "data",
-        JSON.stringify([...parsedData, { name: name, hutang: 20000 }])
-      );
+      localStorage.setItem("data", JSON.stringify([...parsedData, dataForm]));
+      toggle(dataForm);
     } else {
-      localStorage.setItem(
-        "data",
-        JSON.stringify([{ name: name, hutang: 20000 }])
-      );
+      localStorage.setItem("data", JSON.stringify([dataForm]));
     }
   };
 
