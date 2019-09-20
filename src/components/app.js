@@ -3,9 +3,11 @@ import React, { Suspense } from "react";
 import { jsx, Global, css } from "@emotion/core";
 import { Machine } from "xstate";
 import { useMachine } from "@xstate/react";
+import { DataProvider } from "context/dataContext";
 import Navbar from "./navbar";
 import Hero from "./hero";
 import Activities from "./activities";
+
 const ModalTransaction = React.lazy(() => import("./modal-transaction"));
 
 const global = css`
@@ -53,7 +55,7 @@ const App = () => {
   const [current, send, service] = useMachine(toggleModal);
 
   return (
-    <>
+    <DataProvider>
       <Global styles={global} />
       {current.value === "active" ? (
         <Suspense fallback={null}>
@@ -69,7 +71,7 @@ const App = () => {
           <Hero state={service} />
         </div>
       </main>
-    </>
+    </DataProvider>
   );
 };
 

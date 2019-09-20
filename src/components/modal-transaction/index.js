@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { jsx } from "@emotion/core";
 import { useMachine, useService } from "@xstate/react";
+import useData from "functions/useData";
 import { transactionStep } from "machines/machines";
 import { overlay, modal, input, buttonFull } from "components/styles";
 import { dataHutang } from "data/dump";
@@ -12,6 +13,7 @@ const ModalTransition = ({ state }) => {
   const [currentModal, sendModal] = useService(state);
   const [name, setName] = useState("");
   const [nominal, setNominal] = useState(0);
+  const { toggle } = useData();
 
   const filteredName = dataHutang.filter(data =>
     data.name.toLowerCase().includes(name.toLowerCase())
@@ -25,18 +27,20 @@ const ModalTransition = ({ state }) => {
 
   const submitData = e => {
     e.preventDefault();
+    toggle();
     const data = localStorage.getItem("data");
 
     if (data) {
       const parsedData = JSON.parse(data);
+
       localStorage.setItem(
         "data",
-        JSON.stringify([parsedData, { name: name, hutang: 20000 }])
+        JSON.stringify([...parsedData, { name: name, hutang: 20000 }])
       );
     } else {
       localStorage.setItem(
         "data",
-        JSON.stringify({ name: name, hutang: 20000 })
+        JSON.stringify([{ name: name, hutang: 20000 }])
       );
     }
   };
