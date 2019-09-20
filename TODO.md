@@ -12,6 +12,6 @@
 - [ ] add option hutang / piutang
 - [x] store Name data to search name input ( localStorage )
 - [x] store activities ( localStorage )
-- [ ] update total hutang dan piutang di dashboard
+- [x] update total hutang dan piutang di dashboard
 - [ ] fixing Context code
 - [x] setup a11y react

@@ -23,10 +23,16 @@ const useData = () => {
       JSON.stringify([...getActivities(), data])
     );
   };
+
+  const totalNominal = getData().reduce((val, element) => {
+    return Number(val) + Number(element.hutang);
+  }, 0);
+
   return {
     toggle,
     getData,
-    getActivities
+    getActivities,
+    totalNominal
   };
 };
 

@@ -5,9 +5,11 @@ import { jsx, css } from "@emotion/core";
 import bg from "assets/images/bg.jpg";
 import { hero, overlay, heroContent } from "./style";
 import { button } from "components/styles";
+import useData from "functions/useData";
 
 const Hero = ({ state }) => {
   const [current, send] = useService(state);
+  const { totalNominal } = useData();
 
   return (
     <header
@@ -24,7 +26,7 @@ const Hero = ({ state }) => {
           <div css={heroContent}>
             <div>
               <span>Hutang</span>
-              <h2>Rp.30,000</h2>
+              <h2>Rp.{totalNominal}</h2>
             </div>
             <div>
               <span>Piutang</span>
