@@ -6,7 +6,15 @@ const useData = () => {
   const getData = () => state.getData();
   const getActivities = () => state.getActivities();
 
-  const toggle = props => {
+  const storeData = data => {
+    setState(state => ({
+      ...state,
+      dataUser: [...state.dataUser, data]
+    }));
+    localStorage.setItem("data", JSON.stringify([...getData(), data]));
+  };
+
+  const storeActivities = props => {
     const data = {
       title: "Hutang",
       descriptions: `anda berhutang kepada ${props.name} sebesar Rp.${props.hutang}`
@@ -17,7 +25,6 @@ const useData = () => {
       dataActivities: [...state.dataActivities, data]
     }));
 
-    getActivities();
     localStorage.setItem(
       "activities",
       JSON.stringify([...getActivities(), data])
@@ -29,7 +36,8 @@ const useData = () => {
   }, 0);
 
   return {
-    toggle,
+    storeActivities,
+    storeData,
     getData,
     getActivities,
     totalNominal

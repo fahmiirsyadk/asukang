@@ -21,7 +21,7 @@ const dataRaw = {
     return getStorageActivities();
   },
   dataActivities: [],
-  dataHutang: []
+  dataUser: []
 };
 
 const DataContext = React.createContext({

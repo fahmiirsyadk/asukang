@@ -12,7 +12,7 @@ const ModalTransition = ({ state }) => {
   const [currentModal, sendModal] = useService(state);
   const [name, setName] = useState("");
   const [nominal, setNominal] = useState(0);
-  const { toggle, getData } = useData();
+  const { storeData, storeActivities, getData } = useData();
 
   const filteredName = getData().filter(data =>
     data.name.toLowerCase().includes(name.toLowerCase())
@@ -27,13 +27,8 @@ const ModalTransition = ({ state }) => {
   const submitData = e => {
     e.preventDefault();
     const dataForm = { name: name, hutang: Number(nominal) };
-    const d = getData();
-    if (d) {
-      localStorage.setItem("data", JSON.stringify([...d, dataForm]));
-      toggle(dataForm);
-    } else {
-      localStorage.setItem("data", JSON.stringify([dataForm]));
-    }
+    storeData(dataForm);
+    storeActivities(dataForm);
   };
 
   return (
