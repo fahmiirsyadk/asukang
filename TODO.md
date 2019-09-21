@@ -8,7 +8,7 @@
 - [ ] offline & online sign
 - [ ] update / store firebase data ( not on mount, only when clicked )
 - [ ] setup React Helmet
-- [ ] customHook to interact LocalStorage
+- [x] customHook to interact LocalStorage
 - [ ] add option hutang / piutang
 - [x] store Name data to search name input ( localStorage )
 - [x] store activities ( localStorage )

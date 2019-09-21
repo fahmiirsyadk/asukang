@@ -1,11 +1,10 @@
 import React, { useState } from "react";
+import { setStorage, getStorage } from "functions/local-storage";
 
-const setStorageData = () => localStorage.setItem("data", JSON.stringify([]));
-const setStorageActivities = () =>
-  localStorage.setItem("activities", JSON.stringify([]));
-const getStorageData = () => JSON.parse(localStorage.getItem("data"));
-const getStorageActivities = () =>
-  JSON.parse(localStorage.getItem("activities"));
+const setStorageData = () => setStorage("data", []);
+const setStorageActivities = () => setStorage("activities", []);
+const getStorageData = () => getStorage("data");
+const getStorageActivities = () => getStorage("activities");
 
 const dataRaw = {
   getData: () => {

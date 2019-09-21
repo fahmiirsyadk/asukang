@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { DataContext } from "context/dataContext";
+import { setStorage } from "./local-storage";
 
 const useData = () => {
   const [state, setState] = useContext(DataContext);
@@ -11,7 +12,7 @@ const useData = () => {
       ...state,
       dataUser: [...state.dataUser, data]
     }));
-    localStorage.setItem("data", JSON.stringify([...getData(), data]));
+    setStorage("data", [...getData(), data]);
   };
 
   const storeActivities = props => {
@@ -25,10 +26,7 @@ const useData = () => {
       dataActivities: [...state.dataActivities, data]
     }));
 
-    localStorage.setItem(
-      "activities",
-      JSON.stringify([...getActivities(), data])
-    );
+    setStorage("activities", [...getActivities(), data]);
   };
 
   const totalNominal = getData().reduce((val, element) => {
