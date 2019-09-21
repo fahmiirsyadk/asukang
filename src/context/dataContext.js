@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { dataActivities, dataHutang } from "data/dump";
 
 const setStorageData = () => localStorage.setItem("data", JSON.stringify([]));
 const setStorageActivities = () =>
@@ -9,8 +8,6 @@ const getStorageActivities = () =>
   JSON.parse(localStorage.getItem("activities"));
 
 const dataRaw = {
-  dataActivities: dataActivities,
-  dataHutang: dataHutang,
   getData: () => {
     if (!getStorageData()) {
       setStorageData();
@@ -22,7 +19,9 @@ const dataRaw = {
       setStorageActivities();
     }
     return getStorageActivities();
-  }
+  },
+  dataActivities: [],
+  dataHutang: []
 };
 
 const DataContext = React.createContext({
