@@ -16,3 +16,12 @@
 - [ ] fixing Context code
 - [x] setup a11y react
 - [x] rename toggle data & simplify code store data
+- [ ] responsive mobile view
+- [ ] popup close
+
+# REDESIGN
+
+- [x] profile tabs on left side
+- [ ] new colors look
+- [ ] popup redesign
+- [ ] button redesign

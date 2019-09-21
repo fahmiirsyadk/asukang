@@ -67,3 +67,36 @@ export const buttonFull = css`
   padding: 10px 0;
   width: 100%;
 `;
+
+export const buttonPrimary = css`
+  background-color: #e8effd;
+  color: blue;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  ${borderR3};
+`;
+
+export const buttonPrimaryFull = css`
+  ${buttonPrimary};
+  padding: 10px 0;
+  width: 100%;
+  &:focus,
+  &:hover {
+    background-color: #cdddfb;
+  }
+`;
+
+// notification box
+const notificationBox = css`
+  ${borderR3};
+  padding: 3px;
+  background-color: #333;
+  font-weight: 600;
+`;
+export const notificationBoxRed = css`
+  ${notificationBox};
+  background-color: #fbd1e5;
+  color: #ea5e9a;
+`;

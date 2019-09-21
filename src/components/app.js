@@ -6,7 +6,7 @@ import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/dataContext";
 import Navbar from "./navbar";
 import Hero from "./hero";
-import Activities from "./activities";
+import Profile from "./profile";
 
 const ModalTransaction = React.lazy(() => import("./modal-transaction"));
 
@@ -64,7 +64,7 @@ const App = () => {
       ) : null}
       <main css={mainS}>
         <div css={colomn(1)}>
-          <Activities />
+          <Profile />
         </div>
         <div css={colomn(4)}>
           <Navbar />

@@ -2,7 +2,6 @@ import { css } from "@emotion/core";
 
 export const aside = css`
   height: 100vh;
-  // background-color: #f3f3f9;
   border: 1px solid #eee;
 `;
 
@@ -17,9 +16,11 @@ export const nav = css`
 `;
 
 export const activityItem = css`
-  padding: 10px 15px;
-  border-bottom: 1px solid #eee;
-  // border-radius: 3px;
   background-color: white;
-  // margin-bottom: 5px;
+  padding-top: 1em;
+  p {
+    margin-top: 10px;
+    color: #172d4a;
+    font-size: 14px;
+  }
 `;
