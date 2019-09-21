@@ -15,4 +15,4 @@
 - [x] update total hutang dan piutang di dashboard
 - [ ] fixing Context code
 - [x] setup a11y react
-- [ ] rename toggle data & simplify code store data
+- [x] rename toggle data & simplify code store data
