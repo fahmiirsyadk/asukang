@@ -3,6 +3,7 @@ import { css } from "@emotion/core";
 export const activityItem = css`
   background-color: white;
   padding-top: 1em;
+
   p {
     margin-top: 10px;
     color: #172d4a;

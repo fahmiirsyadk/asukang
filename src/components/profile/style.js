@@ -4,6 +4,7 @@ export const aside = css`
   height: 100vh;
   border: 1px solid #eee;
   position: absolute;
+  width: 100%;
   overflow-y: auto;
 `;
 
@@ -25,9 +26,11 @@ export const profileHeader = css`
   background-color: white;
   padding: 2em;
   position: fixed;
+  border-right: 1px solid #eee;
   border-bottom: 1px solid #eee;
   z-index: 1;
   width: inherit;
+  min-width: 200px;
   img {
     width: 100px;
     height: 100px;

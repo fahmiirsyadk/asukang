@@ -2,7 +2,7 @@ import { css } from "@emotion/core";
 
 export const hero = css`
   width: 100%;
-  height: 250px;
+  height: 235px;
   background-color: #eee;
 `;
 

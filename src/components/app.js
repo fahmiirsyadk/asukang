@@ -34,6 +34,12 @@ const colomn = flex => css`
   flex: ${flex};
 `;
 
+const outerAside = css`
+  ${colomn(1)};
+  position: relative;
+  min-width: 200px;
+`;
+
 const toggleModal = Machine({
   id: "modal",
   initial: "inactive",
@@ -63,7 +69,7 @@ const App = () => {
         </Suspense>
       ) : null}
       <main css={mainS}>
-        <div css={[colomn(1), { position: "relative" }]}>
+        <div css={outerAside}>
           <Profile />
         </div>
         <div css={colomn(4)}>
