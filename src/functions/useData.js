@@ -17,8 +17,10 @@ const useData = () => {
 
   const storeActivities = props => {
     const data = {
-      title: "Hutang",
-      descriptions: `anda berhutang kepada ${props.name} sebesar Rp.${props.hutang}`
+      type: "Hutang",
+      target: String(props.name),
+      nominal: Number(props.hutang),
+      date: String(props.date)
     };
 
     setState(state => ({

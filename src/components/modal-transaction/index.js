@@ -26,7 +26,12 @@ const ModalTransition = ({ state }) => {
 
   const submitData = e => {
     e.preventDefault();
-    const dataForm = { name: name, hutang: Number(nominal) };
+    const date = new Date();
+    const dataForm = {
+      name: name,
+      hutang: Number(nominal),
+      date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+    };
     storeData(dataForm);
     storeActivities(dataForm);
   };

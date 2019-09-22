@@ -2,7 +2,11 @@
 import React from "react";
 import { jsx, css } from "@emotion/core";
 import { aside, nav, activityItem } from "./style";
-import { buttonPrimaryFull, notificationBoxRed } from "components/styles";
+import {
+  buttonPrimaryFull,
+  notificationBoxRed,
+  flexSpace
+} from "components/styles";
 import profile from "assets/images/profile.jpg";
 import useData from "functions/useData";
 
@@ -35,7 +39,6 @@ const activities = css`
   color: #1b2d40;
   span {
     font-weight: 600;
-    font-size: 14px;
   }
 `;
 
@@ -56,10 +59,21 @@ const Profile = () => {
         </div>
         <div css={activities}>
           <span>activities</span>
-          {getActivities().map((activity, i) => (
+          {getActivities().map(({ type, target, nominal, date }, i) => (
             <div css={activityItem} key={i}>
-              <span css={notificationBoxRed}>{activity.title}</span>
-              <p>{activity.descriptions}</p>
+              <div css={flexSpace}>
+                <span css={notificationBoxRed}>{type}</span>
+                <span css={{ fontSize: "14px", color: "#8291a5" }}>{date}</span>
+              </div>
+              <p>
+                Anda telah ber{type.toLowerCase()} kepada{" "}
+                <strong>{target}</strong> sejumlah{" "}
+                <b>
+                  Rp.
+                  {nominal}
+                </b>
+                .
+              </p>
             </div>
           ))}
         </div>

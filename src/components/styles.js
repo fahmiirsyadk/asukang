@@ -1,5 +1,16 @@
 import { css } from "@emotion/core";
 
+// layout
+export const flex = css`
+  display: flex;
+  align-items: center;
+`;
+
+export const flexSpace = css`
+  ${flex};
+  justify-content: space-between;
+`;
+
 const borderR3 = css`
   border-radius: 3px;
 `;
@@ -91,9 +102,10 @@ export const buttonPrimaryFull = css`
 // notification box
 const notificationBox = css`
   ${borderR3};
-  padding: 3px;
+  padding: 3px 5px;
   background-color: #333;
   font-weight: 600;
+  font-size: 14px;
 `;
 export const notificationBoxRed = css`
   ${notificationBox};
