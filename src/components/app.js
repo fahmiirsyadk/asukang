@@ -63,7 +63,7 @@ const App = () => {
         </Suspense>
       ) : null}
       <main css={mainS}>
-        <div css={colomn(1)}>
+        <div css={[colomn(1), { position: "relative" }]}>
           <Profile />
         </div>
         <div css={colomn(4)}>

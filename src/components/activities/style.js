@@ -11,8 +11,9 @@ export const activityItem = css`
 `;
 
 export const activities = css`
-  padding: 1em;
   color: #1b2d40;
+  padding: 0 1em 1em;
+  transform: translate3d(0px, 290px, 0px);
   span {
     font-weight: 600;
   }

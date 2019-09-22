@@ -3,6 +3,8 @@ import { css } from "@emotion/core";
 export const aside = css`
   height: 100vh;
   border: 1px solid #eee;
+  position: absolute;
+  overflow-y: auto;
 `;
 
 export const nav = css`
@@ -20,7 +22,12 @@ export const profileHeader = css`
   justify-content: center;
   align-items: center;
   min-height: 200px;
+  background-color: white;
   padding: 2em;
+  position: fixed;
+  border-bottom: 1px solid #eee;
+  z-index: 1;
+  width: inherit;
   img {
     width: 100px;
     height: 100px;

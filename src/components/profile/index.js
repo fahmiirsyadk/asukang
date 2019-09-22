@@ -11,14 +11,16 @@ const Profile = () => {
   const { getActivities } = useData();
   return (
     <aside css={aside}>
-      <div css={profileHeader}>
-        <div css={{ textAlign: "center", width: "100%" }}>
-          <img src={profile} alt="profile-img" />
-          <div css={profileHeaderDetail}>
-            <h4>Fahmi Irsyad Khairi</h4>
-            <p>vertified account</p>
+      <div style={{ position: "relative", width: "19.9%" }}>
+        <div css={profileHeader}>
+          <div css={{ textAlign: "center", width: "100%" }}>
+            <img src={profile} alt="profile-img" />
+            <div css={profileHeaderDetail}>
+              <h4>Fahmi Irsyad Khairi</h4>
+              <p>vertified account</p>
+            </div>
+            <button css={buttonPrimaryFull}>Edit Profile</button>
           </div>
-          <button css={buttonPrimaryFull}>Edit Profile</button>
         </div>
       </div>
       <Activities data={getActivities} />
