@@ -15,12 +15,26 @@ export const nav = css`
   align-items: center;
 `;
 
-export const activityItem = css`
-  background-color: white;
-  padding-top: 1em;
+export const profileHeader = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  padding: 2em;
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const profileHeaderDetail = css`
+  color: #1b2d40;
+  margin: 1em 0;
   p {
-    margin-top: 10px;
-    color: #172d4a;
+    margin: 0.4em 0;
     font-size: 14px;
+    color: #8291a5;
   }
 `;
