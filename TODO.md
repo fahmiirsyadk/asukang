@@ -18,10 +18,12 @@
 - [x] rename toggle data & simplify code store data
 - [ ] responsive mobile view
 - [ ] popup close
+- [ ] offline change to sync/ not synced
+- [ ] activities scroll
 
 # REDESIGN
 
 - [x] profile tabs on left side
-- [ ] new colors look
+- [x] new colors look
 - [ ] popup redesign
-- [ ] button redesign
+- [x] button redesign
