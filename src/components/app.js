@@ -63,11 +63,6 @@ const App = () => {
   return (
     <DataProvider>
       <Global styles={global} />
-      {current.value === "active" ? (
-        <Suspense fallback={null}>
-          <ModalTransaction state={service} />
-        </Suspense>
-      ) : null}
       <main css={mainS}>
         <div css={[outerAside, { borderRight: "1px solid #eee" }]}>
           <Aside />
@@ -80,5 +75,11 @@ const App = () => {
     </DataProvider>
   );
 };
+
+// {current.value === "active" ? (
+//   <Suspense fallback={null}>
+//     <ModalTransaction state={service} />
+//   </Suspense>
+// ) : null}
 
 export default App;
