@@ -13,9 +13,8 @@ const Profile = ({ state }) => {
 
   return (
     <aside css={aside}>
-      <ShortcutsBox />
+      <ShortcutsBox state={state} />
       <div id="aside-content">
-        <button onClick={() => send("TWO")}>set two</button>
         {matches("one") ? (
           <AsideHome />
         ) : matches("two") ? (

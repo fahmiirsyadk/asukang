@@ -5,7 +5,6 @@ import { Machine } from "xstate";
 import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/dataContext";
 import { switchShortcuts } from "machines/machines";
-// import Navbar from "./navbar";
 // import Hero from "./hero";
 import Aside from "./aside";
 
@@ -69,10 +68,7 @@ const App = () => {
         <div css={[outerAside, { borderRight: "1px solid #eee" }]}>
           <Aside state={serviceSrc} />
         </div>
-        <div css={colomn(3)}>
-          {/** <Navbar />*/}
-          {/** <Hero state={service} /> */}
-        </div>
+        <div css={colomn(3)}>{/** <Hero state={service} /> */}</div>
       </main>
     </DataProvider>
   );

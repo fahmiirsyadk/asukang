@@ -30,7 +30,9 @@ export const switchShortcuts = Machine({
       }
     },
     two: {
-      on: {}
+      on: {
+        ONE: "one"
+      }
     }
   }
 });
