@@ -6,7 +6,7 @@ import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/dataContext";
 import Navbar from "./navbar";
 import Hero from "./hero";
-import Profile from "./profile";
+import Aside from "./aside";
 
 const ModalTransaction = React.lazy(() => import("./modal-transaction"));
 
@@ -37,7 +37,7 @@ const colomn = flex => css`
 const outerAside = css`
   ${colomn(1)};
   position: relative;
-  min-width: 200px;
+  min-width: 255px;
 `;
 
 const toggleModal = Machine({
@@ -69,10 +69,10 @@ const App = () => {
         </Suspense>
       ) : null}
       <main css={mainS}>
-        <div css={outerAside}>
-          <Profile />
+        <div css={[outerAside, { borderRight: "1px solid #eee" }]}>
+          <Aside />
         </div>
-        <div css={colomn(4)}>
+        <div css={colomn(3)}>
           <Navbar />
           <Hero state={service} />
         </div>
