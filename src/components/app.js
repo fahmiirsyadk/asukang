@@ -4,8 +4,8 @@ import { jsx, Global, css } from "@emotion/core";
 import { Machine } from "xstate";
 import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/dataContext";
-import Navbar from "./navbar";
-import Hero from "./hero";
+// import Navbar from "./navbar";
+// import Hero from "./hero";
 import Aside from "./aside";
 
 const ModalTransaction = React.lazy(() => import("./modal-transaction"));
@@ -73,8 +73,8 @@ const App = () => {
           <Aside />
         </div>
         <div css={colomn(3)}>
-          <Navbar />
-          <Hero state={service} />
+          {/** <Navbar />*/}
+          {/** <Hero state={service} /> */}
         </div>
       </main>
     </DataProvider>
