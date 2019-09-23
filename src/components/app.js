@@ -4,11 +4,12 @@ import { jsx, Global, css } from "@emotion/core";
 import { Machine } from "xstate";
 import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/dataContext";
+import { switchShortcuts } from "machines/machines";
 // import Navbar from "./navbar";
 // import Hero from "./hero";
 import Aside from "./aside";
 
-const ModalTransaction = React.lazy(() => import("./modal-transaction"));
+// const ModalTransaction = React.lazy(() => import("./modal-transaction"));
 
 const global = css`
   * {
@@ -59,13 +60,14 @@ const toggleModal = Machine({
 
 const App = () => {
   const [current, send, service] = useMachine(toggleModal);
+  const [currentSrc, sendSrc, serviceSrc] = useMachine(switchShortcuts);
 
   return (
     <DataProvider>
       <Global styles={global} />
       <main css={mainS}>
         <div css={[outerAside, { borderRight: "1px solid #eee" }]}>
-          <Aside />
+          <Aside state={serviceSrc} />
         </div>
         <div css={colomn(3)}>
           {/** <Navbar />*/}

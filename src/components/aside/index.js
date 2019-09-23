@@ -1,22 +1,24 @@
 /** @jsx jsx */
-import React, { useState, Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import { jsx } from "@emotion/core";
+import { useService } from "@xstate/react";
 import { aside } from "./style";
 import ShortcutsBox from "components/shortcuts-box";
 import AsideLoading from "components/aside-loading";
 import AsideHome from "components/aside-home";
 const AsideTransaction = lazy(() => import("components/aside-transaction"));
 
-const Profile = () => {
-  const [state, setState] = useState(1);
+const Profile = ({ state }) => {
+  const [{ matches }, send] = useService(state);
+
   return (
     <aside css={aside}>
       <ShortcutsBox />
       <div id="aside-content">
-        <button onClick={() => setState(2)}>set two</button>
-        {state === 1 ? (
+        <button onClick={() => send("TWO")}>set two</button>
+        {matches("one") ? (
           <AsideHome />
-        ) : state === 2 ? (
+        ) : matches("two") ? (
           <Suspense fallback={<AsideLoading />}>
             <AsideTransaction />
           </Suspense>
