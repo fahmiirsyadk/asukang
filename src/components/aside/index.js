@@ -13,30 +13,30 @@ const Profile = ({ state }) => {
 
   return (
     <aside css={aside}>
-      <ShortcutsBox>
-        <div label="Gator">
+      <ShortcutsBox state={state}>
+        <div label="Home">
           See ya later, <em>Alligator</em>!
         </div>
-        <div label="Croc">
+        <div label="Transaction">
           After &apos;while, <em>Crocodile</em>!
         </div>
-        <div label="Sarcosuchus">
+        <div label="Wishlists">
           Nothing to see here, this tab is <em>extinct</em>!
         </div>
       </ShortcutsBox>
-      <div id="aside-content"></div>
+      <div id="aside-content">
+        {matches("home") ? (
+          <AsideHome />
+        ) : matches("transaction") ? (
+          <Suspense fallback={<AsideLoading />}>
+            <AsideTransaction />
+          </Suspense>
+        ) : matches("wishlists") ? (
+          <p>Not found</p>
+        ) : null}
+      </div>
     </aside>
   );
 };
 
 export default Profile;
-
-// {matches("one") ? (
-//   <AsideHome />
-// ) : matches("two") ? (
-//   <Suspense fallback={<AsideLoading />}>
-//     <AsideTransaction />
-//   </Suspense>
-// ) : (
-//   <AsideHome />
-// )}

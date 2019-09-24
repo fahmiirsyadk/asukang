@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React, { useState } from "react";
-// import { useService } from "@xstate/react";
+import { useService } from "@xstate/react";
 import { jsx, css } from "@emotion/core";
 import { shortcutsBox } from "./style";
 
@@ -14,9 +14,15 @@ const shorcutItem = css`
   margin: 5px 0;
 `;
 
-const ShorcutItem = ({ activeTab, label, onClick }) => {
+const ShorcutItem = ({ action, activeTab, label, onClick }) => {
   return (
-    <div css={shorcutItem} onClick={() => onClick(label)}>
+    <div
+      css={shorcutItem}
+      onClick={() => {
+        onClick(label);
+        action();
+      }}
+    >
       <p>
         {label} - {activeTab === label ? "y" : "n"}
       </p>
@@ -24,7 +30,8 @@ const ShorcutItem = ({ activeTab, label, onClick }) => {
   );
 };
 
-const ShortcutsBox = ({ children }) => {
+const ShortcutsBox = ({ state, children }) => {
+  const [current, send] = useService(state);
   const [active, setActive] = useState(children[0].props.label);
 
   const onClickShortcutItem = tab => {
@@ -42,6 +49,7 @@ const ShortcutsBox = ({ children }) => {
               key={label}
               label={label}
               onClick={onClickShortcutItem}
+              action={() => send(String(label).toUpperCase())}
             />
           );
         })}
@@ -51,7 +59,3 @@ const ShortcutsBox = ({ children }) => {
 };
 
 export default ShortcutsBox;
-
-// {children.map((data, i) => (
-//   <ShorcutItem key={i} data={data} />
-// ))}

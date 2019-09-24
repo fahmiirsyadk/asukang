@@ -22,16 +22,24 @@ export const transactionStep = Machine({
 
 export const switchShortcuts = Machine({
   id: "switchShortcuts",
-  initial: "one",
+  initial: "home",
   states: {
-    one: {
+    home: {
       on: {
-        TWO: "two"
+        TRANSACTION: "transaction",
+        WISHLISTS: "wishlists"
       }
     },
-    two: {
+    transaction: {
       on: {
-        ONE: "one"
+        HOME: "home",
+        WISHLISTS: "wishlists"
+      }
+    },
+    wishlists: {
+      on: {
+        HOME: "home",
+        TRANSACTION: "transaction"
       }
     }
   }
