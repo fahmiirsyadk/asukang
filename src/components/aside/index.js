@@ -3,7 +3,7 @@ import React, { Suspense, lazy } from "react";
 import { jsx } from "@emotion/core";
 import { useService } from "@xstate/react";
 import { aside } from "./style";
-import ShortcutsBox from "components/shortcuts-box";
+import Shortcuts from "components/shortcuts";
 import AsideLoading from "components/aside-loading";
 import AsideHome from "components/aside-home";
 const AsideTransaction = lazy(() => import("components/aside-transaction"));
@@ -13,7 +13,7 @@ const Profile = ({ state }) => {
 
   return (
     <aside css={aside}>
-      <ShortcutsBox state={state}>
+      <Shortcuts state={state}>
         <div label="Home">
           See ya later, <em>Alligator</em>!
         </div>
@@ -23,7 +23,7 @@ const Profile = ({ state }) => {
         <div label="Wishlists">
           Nothing to see here, this tab is <em>extinct</em>!
         </div>
-      </ShortcutsBox>
+      </Shortcuts>
       <div id="aside-content">
         {matches("home") ? (
           <AsideHome />
