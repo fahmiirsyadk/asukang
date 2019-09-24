@@ -37,7 +37,7 @@ const colomn = flex => css`
 const outerAside = css`
   ${colomn(1)};
   position: relative;
-  min-width: 255px;
+  min-width: 327px;
 `;
 
 const toggleModal = Machine({
