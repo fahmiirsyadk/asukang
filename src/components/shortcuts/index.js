@@ -14,21 +14,19 @@ const Shortcuts = ({ state, children }) => {
   };
 
   return (
-    <div css={shortcuts}>
-      <div>
-        {children.map(child => {
-          const { label } = child.props;
-          return (
-            <Shortcut
-              activeTab={active}
-              key={label}
-              label={label}
-              onClick={onClickShortcutItem}
-              action={() => send(String(label).toUpperCase())}
-            />
-          );
-        })}
-      </div>
+    <div css={shortcuts} aria-label="tablist">
+      {children.map(child => {
+        const { label } = child.props;
+        return (
+          <Shortcut
+            activeTab={active}
+            key={label}
+            label={label}
+            onClick={onClickShortcutItem}
+            action={() => send(String(label).toUpperCase())}
+          />
+        );
+      })}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { css } from "@emotion/core";
 
-export const shortcut = css`
+export const shortcut = status => css`
   width: 50px;
   height: 50px;
   border-radius: 10px;
@@ -8,4 +8,6 @@ export const shortcut = css`
   cursor: pointer;
   color: black;
   margin: 5px 0;
+  user-select: none;
+  border: ${status ? "1px solid blue" : "1px solid transparent"};
 `;
