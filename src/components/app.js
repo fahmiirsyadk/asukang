@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense } from "react";
 import { jsx, Global, css } from "@emotion/core";
 import { Machine } from "xstate";
 import { useMachine } from "@xstate/react";
@@ -57,7 +57,6 @@ const toggleModal = Machine({
 const App = () => {
   const [current, send, service] = useMachine(toggleModal);
   const [currentSrc, sendSrc, serviceSrc] = useMachine(switchShortcuts);
-  const [message, setMessage] = useState([]);
 
   return (
     <DataProvider>

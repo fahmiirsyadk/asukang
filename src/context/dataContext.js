@@ -29,6 +29,7 @@ const DataContext = React.createContext({
 
 const DataProvider = props => {
   const [state, setState] = useState(dataRaw);
+
   return (
     <DataContext.Provider value={[state, setState]}>
       {props.children}

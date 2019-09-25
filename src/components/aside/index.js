@@ -28,7 +28,7 @@ const Profile = ({ state }) => {
       <Shortcuts state={state} data={dataShortcuts} />
       <div id="aside-content">
         {matches("home") ? (
-          <AsideHome />
+          <AsideHome send={send} />
         ) : matches("transaction") ? (
           <Suspense fallback={<AsideLoading />}>
             <AsideTransaction />

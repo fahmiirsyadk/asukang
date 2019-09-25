@@ -6,7 +6,7 @@ import { profileHeader, profileHeaderDetail } from "./style";
 import { buttonPrimaryFull } from "components/styles";
 import { messageServices } from "services/messages";
 
-const AsideHome = () => {
+const AsideHome = ({ send }) => {
   const [message, setMessage] = useState("");
 
   const sendMessage = () =>
@@ -32,7 +32,9 @@ const AsideHome = () => {
           <button onClick={sendMessage}>send Msg</button>
           <button onClick={clearMessage}>clear Msg</button>
         </div>
-        <button css={buttonPrimaryFull}>+ New Transaction</button>
+        <button css={buttonPrimaryFull} onClick={() => send("TRANSACTION")}>
+          + New Transaction
+        </button>
       </div>
     </div>
   );
