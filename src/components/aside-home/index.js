@@ -14,12 +14,8 @@ const AsideHome = () => {
   const clearMessage = () => messageServices.clearMessage();
 
   useEffect(() => {
-    const subs = messageServices.getMessage().subscribe(({ text }) => {
-      if (text !== "") {
-        setMessage(text);
-      } else {
-        setMessage("");
-      }
+    const subs = messageServices.getMessage().subscribe(msg => {
+      msg ? setMessage(msg) : setMessage("");
     });
     return () => subs.unsubscribe();
   }, [message]);
