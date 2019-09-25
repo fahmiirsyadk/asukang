@@ -1,14 +1,11 @@
 /** @jsx jsx */
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { jsx, Global, css } from "@emotion/core";
 import { Machine } from "xstate";
 import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/dataContext";
 import { switchShortcuts } from "machines/machines";
-// import Hero from "./hero";
 import Aside from "./aside";
-
-// const ModalTransaction = React.lazy(() => import("./modal-transaction"));
 
 const global = css`
   * {
@@ -60,6 +57,7 @@ const toggleModal = Machine({
 const App = () => {
   const [current, send, service] = useMachine(toggleModal);
   const [currentSrc, sendSrc, serviceSrc] = useMachine(switchShortcuts);
+  const [message, setMessage] = useState([]);
 
   return (
     <DataProvider>
@@ -68,16 +66,10 @@ const App = () => {
         <div css={[outerAside, { borderRight: "1px solid #eee" }]}>
           <Aside state={serviceSrc} />
         </div>
-        <div css={colomn(3)}>{/** <Hero state={service} /> */}</div>
+        <div css={colomn(3)}></div>
       </main>
     </DataProvider>
   );
 };
-
-// {current.value === "active" ? (
-//   <Suspense fallback={null}>
-//     <ModalTransaction state={service} />
-//   </Suspense>
-// ) : null}
 
 export default App;

@@ -8,22 +8,24 @@ import AsideLoading from "components/aside-loading";
 import AsideHome from "components/aside-home";
 const AsideTransaction = lazy(() => import("components/aside-transaction"));
 
+const dataShortcuts = [
+  {
+    label: "Home"
+  },
+  {
+    label: "Transaction"
+  },
+  {
+    label: "Wishlists"
+  }
+];
+
 const Profile = ({ state }) => {
   const [{ matches }, send] = useService(state);
 
   return (
     <aside css={aside}>
-      <Shortcuts state={state}>
-        <div label="Home">
-          See ya later, <em>Alligator</em>!
-        </div>
-        <div label="Transaction">
-          After &apos;while, <em>Crocodile</em>!
-        </div>
-        <div label="Wishlists">
-          Nothing to see here, this tab is <em>extinct</em>!
-        </div>
-      </Shortcuts>
+      <Shortcuts state={state} data={dataShortcuts} />
       <div id="aside-content">
         {matches("home") ? (
           <AsideHome />

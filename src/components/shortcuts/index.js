@@ -5,9 +5,9 @@ import { jsx, css } from "@emotion/core";
 import { shortcuts } from "./style";
 import Shortcut from "components/shortcut";
 
-const Shortcuts = ({ state, children }) => {
+const Shortcuts = ({ state, data }) => {
   const [current, send] = useService(state);
-  const [active, setActive] = useState(children[0].props.label);
+  const [active, setActive] = useState(data[0].label);
 
   const onClickShortcutItem = tab => {
     setActive(tab);
@@ -15,8 +15,8 @@ const Shortcuts = ({ state, children }) => {
 
   return (
     <div css={shortcuts} aria-label="tablist">
-      {children.map(child => {
-        const { label } = child.props;
+      {data.map(child => {
+        const { label } = child;
         return (
           <Shortcut
             activeTab={active}
