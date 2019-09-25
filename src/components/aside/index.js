@@ -13,9 +13,6 @@ const dataShortcuts = [
     label: "Home"
   },
   {
-    label: "Transaction"
-  },
-  {
     label: "Wishlists"
   }
 ];
