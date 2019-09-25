@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useData from "functions/useData";
-import ListName from "components/modal-transaction/list";
+import ListName from "components/list-name";
 
 const AsideTransaction = () => {
   const [name, setName] = useState("");
