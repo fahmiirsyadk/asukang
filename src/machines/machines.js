@@ -11,8 +11,7 @@ export const transactionFlow = Machine({
     },
     two: {
       on: {
-        NEXT: "one",
-        UNDO: "one"
+        NEXT: "one"
       }
     }
   }

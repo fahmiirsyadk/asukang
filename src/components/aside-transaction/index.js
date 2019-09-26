@@ -13,7 +13,7 @@ import { wrapperList, wrapperBtn, overlay, overlayContent } from "./style";
 import useData from "functions/useData";
 import ListName from "components/list-name";
 
-const AsideTransaction = () => {
+const AsideTransaction = props => {
   const [name, setName] = useState("");
   const [nominal, setNominal] = useState(0);
   const { storeData, storeActivities, getData } = useData();
@@ -81,7 +81,9 @@ const AsideTransaction = () => {
         <button css={buttonPrimaryFull} onClick={() => send("NEXT")}>
           <span>{nominal !== "" ? nominal : 0}</span> Proses >
         </button>
-        <button css={buttonPrimaryGFull}>Batalkan</button>
+        <button css={buttonPrimaryGFull} onClick={() => props.send("HOME")}>
+          Batalkan
+        </button>
       </div>
       {current.matches("two") ? (
         <div css={overlay}>
@@ -99,7 +101,7 @@ const AsideTransaction = () => {
             >
               Yakin, konfirmasi
             </button>
-            <button css={buttonPrimaryGFull} onClick={() => send("UNDO")}>
+            <button css={buttonPrimaryGFull} onClick={() => send("NEXT")}>
               Kembali
             </button>
           </div>

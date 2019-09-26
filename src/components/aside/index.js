@@ -28,7 +28,7 @@ const Profile = ({ state }) => {
           <AsideHome send={send} />
         ) : matches("transaction") ? (
           <Suspense fallback={<AsideLoading />}>
-            <AsideTransaction />
+            <AsideTransaction send={send} />
           </Suspense>
         ) : matches("wishlists") ? (
           <p>Not found</p>
