@@ -1,5 +1,8 @@
 import { css } from "@emotion/core";
 
+const primaryColor = "#5f80f5";
+const darkenPrimaryColor = "#5272F0";
+
 // layout
 export const flex = css`
   display: flex;
@@ -80,23 +83,42 @@ export const buttonFull = css`
 `;
 
 export const buttonPrimary = css`
-  background-color: #e8effd;
-  color: blue;
+  background-color: ${primaryColor};
+  color: white;
   cursor: pointer;
   font-weight: 600;
   padding: 10px 20px;
+  font-size: 14px;
   border: none;
   ${borderR3};
+  &:focus,
+  &:hover {
+    background-color: ${darkenPrimaryColor};
+  }
+`;
+
+export const buttonPrimaryG = css`
+  ${buttonPrimary};
+  background-color: white;
+  color: ${primaryColor};
+  border: 2px solid ${primaryColor};
+  &:focus,
+  &:hover {
+    background-color: white;
+    border: 2px solid ${darkenPrimaryColor};
+  }
 `;
 
 export const buttonPrimaryFull = css`
   ${buttonPrimary};
   padding: 10px 0;
   width: 100%;
-  &:focus,
-  &:hover {
-    background-color: #cdddfb;
-  }
+`;
+
+export const buttonPrimaryGFull = css`
+  ${buttonPrimaryG};
+  padding: 10px 0;
+  width: 100%;
 `;
 
 // notification box
@@ -111,4 +133,77 @@ export const notificationBoxRed = css`
   ${notificationBox};
   background-color: #fbd1e5;
   color: #ea5e9a;
+`;
+
+// radio button
+export const radioGroup = css`
+  input {
+    width: 32px;
+    height: 32px;
+    order: 1;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    cursor: pointer;
+    visibility: hidden;
+  }
+  label {
+    border: 2px solid transparent;
+    width: 100%;
+    display: block;
+    text-align: left;
+    padding: 10px 0;
+    border-radius: 3px;
+    color: #3c454c;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: color 200ms ease-in;
+    overflow: hidden;
+
+    &:before {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    &:after {
+      width: 15px;
+      height: 15px;
+      content: "";
+      border: 2px solid #d1d7dc;
+      background-color: #fff;
+      background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+      background-repeat: no-repeat;
+      background-position: 2px 3px;
+      border-radius: 50%;
+      z-index: 2;
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      transition: all 200ms ease-in;
+    }
+  }
+
+  input:checked ~ label {
+    border: 2px solid #54e0c7;
+    &:before {
+      transform: translate(-50%, -50%) scale3d(56, 56, 1);
+      opacity: 1;
+    }
+
+    &:after {
+      background-color: #54e0c7;
+      border-color: #54e0c7;
+    }
+  }
 `;

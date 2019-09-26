@@ -5,5 +5,6 @@ export const aside = css`
   display: flex;
   #aside-content {
     width: 100%;
+    overflow: auto;
   }
 `;
