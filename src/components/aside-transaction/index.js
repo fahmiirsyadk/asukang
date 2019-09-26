@@ -48,7 +48,6 @@ const AsideTransaction = () => {
           pattern="[0-9]*"
           onChange={onChangeNominal}
           value={nominal}
-          autoFocus
         />
       </div>
       <div>
