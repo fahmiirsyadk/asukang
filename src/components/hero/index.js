@@ -1,15 +1,15 @@
 /** @jsx jsx */
-import React from "react";
+import React, { useContext } from "react";
 import { useService } from "@xstate/react";
 import { jsx, css } from "@emotion/core";
 import bg from "assets/images/bg.jpg";
 import { hero, overlay, heroContent } from "./style";
 import { button } from "components/styles";
-import useData from "functions/useData";
+import { DataContext } from "context/data.context";
 
 const Hero = ({ state }) => {
   const [current, send] = useService(state);
-  const { totalNominal } = useData();
+  const [{ totalNominal }, setState] = useContext(DataContext);
 
   return (
     <header

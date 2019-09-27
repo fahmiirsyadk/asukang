@@ -3,9 +3,10 @@ import React, { Suspense } from "react";
 import { jsx, Global, css } from "@emotion/core";
 import { Machine } from "xstate";
 import { useMachine } from "@xstate/react";
-import { DataProvider } from "context/dataContext";
+import DataProvider from "context/data.provider";
 import { switchShortcuts } from "machines/machines";
-import Aside from "./aside";
+// import Hero from "components/hero";
+import Aside from "components/aside";
 
 const global = css`
   * {
