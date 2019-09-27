@@ -37,7 +37,16 @@ const AsideTransaction = props => {
       hutang: Number(nominal),
       date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
     };
-    storeData(dataForm);
+
+    if (filteredName.length > 0) {
+      const newNominal = filteredName[0].hutang + dataForm.hutang;
+      const dataMutated = getData().filter(
+        el => el.name !== filteredName[0].name
+      );
+      storeData([...dataMutated, { ...dataForm, hutang: newNominal }]);
+    } else {
+      storeData([...getData(), dataForm]);
+    }
     storeActivities(dataForm);
   };
 

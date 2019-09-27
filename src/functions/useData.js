@@ -6,25 +6,7 @@ const useData = () => {
   const [state, setState] = useContext(DataContext);
   const getData = () => state.getData();
   const getActivities = () => state.getActivities();
-
-  const storeData = data => {
-    const prevData = [...getData()];
-    const sameName = prevData.filter(filtered =>
-      filtered.name.toLowerCase().includes(data.name.toLowerCase())
-    );
-
-    if (sameName.length > 0) {
-      const newNominal = sameName[0].hutang + data.hutang;
-      const dataMutated = getData().filter(el => {
-        return el.name !== sameName[0].name;
-      });
-
-      setStorage("data", [...dataMutated, { ...data, hutang: newNominal }]);
-    } else {
-      setStorage("data", [...getData(), data]);
-    }
-  };
-
+  const storeData = data => setStorage("data", data);
   const storeActivities = props => {
     const data = {
       type: "Hutang",
