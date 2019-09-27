@@ -8,11 +8,16 @@ import {
   buttonPrimaryGFull,
   radioGroup
 } from "components/styles";
+import { getStorage } from "functions/local-storage";
+import {
+  sendDataTransaction,
+  sendDataActivities,
+  filteredName
+} from "functions/transactions";
 import { transactionFlow } from "machines/machines";
-import { setStorage, getStorage } from "functions/local-storage";
-import { wrapperList, wrapperBtn, overlay, overlayContent } from "./style";
 import { useDataValue } from "context/data.context";
 import ListName from "components/list-name";
+import { wrapperList, wrapperBtn, overlay, overlayContent } from "./style";
 
 const AsideTransaction = props => {
   const [name, setName] = useState("");
@@ -20,10 +25,8 @@ const AsideTransaction = props => {
   const [current, send] = useMachine(transactionFlow);
   const [, dispatch] = useDataValue();
   const getData = getStorage("data");
+  const filtered = filteredName(name);
 
-  const filteredName = getData.filter(data =>
-    data.name.toLowerCase().includes(name.toLowerCase())
-  );
   const onChangeNominal = e => {
     e.target.validity.valid && e.target.value >= 0
       ? setNominal(e.target.value)
@@ -39,24 +42,23 @@ const AsideTransaction = props => {
       date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
     };
 
-    if (filteredName.length > 0) {
-      const newNominal = filteredName[0].hutang + dataForm.hutang;
-      const dataMutated = getData.filter(
-        el => el.name !== filteredName[0].name
-      );
+    if (filtered.length > 0) {
+      const newNominal = filtered[0].hutang + dataForm.hutang;
+      const dataMutated = getData.filter(el => el.name !== filtered[0].name);
+      const final = [...dataMutated, { ...dataForm, hutang: newNominal }];
       dispatch({
         type: "getDataState",
-        newData: [...dataMutated, { ...dataForm, hutang: newNominal }]
+        newData: final
       });
-      setStorage("data", [...dataMutated, { ...dataForm, hutang: newNominal }]);
+      sendDataTransaction(final);
     } else {
       dispatch({
         type: "getDataState",
         newData: [...getData, dataForm]
       });
-      setStorage("data", [...getData, dataForm]);
+      sendDataTransaction([...getData, dataForm]);
     }
-    setStorage("activities", dataForm);
+    sendDataActivities("activities", dataForm);
   };
 
   return (
@@ -72,7 +74,7 @@ const AsideTransaction = props => {
           autoFocus
         />
         <div css={wrapperList}>
-          <ListName filteredName={filteredName} />
+          <ListName filteredName={filtered} />
         </div>
       </div>
       <div style={{ marginBottom: 20 }}>

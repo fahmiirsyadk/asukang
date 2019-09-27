@@ -3,7 +3,8 @@ import React, { Suspense } from "react";
 import { jsx, Global, css } from "@emotion/core";
 import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/data.context";
-import { setStorage, getStorage } from "functions/local-storage";
+import { getStorage } from "functions/local-storage";
+import { checkLocalStorage } from "functions/transactions";
 import { switchShortcuts } from "machines/machines";
 import Hero from "components/hero";
 import Aside from "components/aside";
@@ -41,11 +42,8 @@ const outerAside = css`
 const App = () => {
   const [currentSrc, sendSrc, serviceSrc] = useMachine(switchShortcuts);
 
-  if (!getStorage("data")) {
-    setStorage("data", []);
-  } else if (!getStorage("activities")) {
-    setStorage("activities", []);
-  }
+  // side-effect
+  checkLocalStorage();
 
   const totalNominal = arr =>
     arr.reduce((val, element) => {
