@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import React, { Suspense } from "react";
 import { jsx, Global, css } from "@emotion/core";
-import { Machine } from "xstate";
 import { useMachine } from "@xstate/react";
-import DataProvider from "context/data.provider";
+import { DataProvider } from "context/data.context";
+import { setStorage, getStorage } from "functions/local-storage";
 import { switchShortcuts } from "machines/machines";
-// import Hero from "components/hero";
+import Hero from "components/hero";
 import Aside from "components/aside";
 
 const global = css`
@@ -38,35 +38,49 @@ const outerAside = css`
   min-width: 327px;
 `;
 
-const toggleModal = Machine({
-  id: "modal",
-  initial: "inactive",
-  states: {
-    active: {
-      on: {
-        INACTIVE: "inactive"
-      }
-    },
-    inactive: {
-      on: {
-        ACTIVE: "active"
-      }
-    }
-  }
-});
-
 const App = () => {
-  const [current, send, service] = useMachine(toggleModal);
   const [currentSrc, sendSrc, serviceSrc] = useMachine(switchShortcuts);
 
+  if (!getStorage("data")) {
+    setStorage("data", []);
+  } else if (!getStorage("activities")) {
+    setStorage("activities", []);
+  }
+
+  const totalNominal = arr =>
+    arr.reduce((val, element) => {
+      return Number(val) + Number(element.hutang);
+    }, 0);
+
+  const initialState = {
+    data: [],
+    activities: [],
+    total: totalNominal(getStorage("data"))
+  };
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "getDataState":
+        return {
+          ...state,
+          data: action.newData,
+          total: totalNominal(action.newData)
+        };
+      default:
+        return state;
+    }
+  };
+
   return (
-    <DataProvider>
+    <DataProvider initialState={initialState} reducer={reducer}>
       <Global styles={global} />
       <main css={mainS}>
         <div css={[outerAside, { borderRight: "1px solid #eee" }]}>
           <Aside state={serviceSrc} />
         </div>
-        <div css={colomn(3)}></div>
+        <div css={colomn(3)}>
+          <Hero state={serviceSrc} />
+        </div>
       </main>
     </DataProvider>
   );

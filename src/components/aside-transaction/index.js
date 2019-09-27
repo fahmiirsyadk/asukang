@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { jsx } from "@emotion/core";
 import { useMachine } from "@xstate/react";
 import {
@@ -11,17 +11,19 @@ import {
 import { transactionFlow } from "machines/machines";
 import { setStorage, getStorage } from "functions/local-storage";
 import { wrapperList, wrapperBtn, overlay, overlayContent } from "./style";
+import { useDataValue } from "context/data.context";
 import ListName from "components/list-name";
 
 const AsideTransaction = props => {
   const [name, setName] = useState("");
   const [nominal, setNominal] = useState(0);
   const [current, send] = useMachine(transactionFlow);
+  const [, dispatch] = useDataValue();
   const getData = getStorage("data");
+
   const filteredName = getData.filter(data =>
     data.name.toLowerCase().includes(name.toLowerCase())
   );
-
   const onChangeNominal = e => {
     e.target.validity.valid && e.target.value >= 0
       ? setNominal(e.target.value)
@@ -42,8 +44,16 @@ const AsideTransaction = props => {
       const dataMutated = getData.filter(
         el => el.name !== filteredName[0].name
       );
+      dispatch({
+        type: "getDataState",
+        newData: [...dataMutated, { ...dataForm, hutang: newNominal }]
+      });
       setStorage("data", [...dataMutated, { ...dataForm, hutang: newNominal }]);
     } else {
+      dispatch({
+        type: "getDataState",
+        newData: [...getData, dataForm]
+      });
       setStorage("data", [...getData, dataForm]);
     }
     setStorage("activities", dataForm);

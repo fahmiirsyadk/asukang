@@ -9,7 +9,7 @@ import { DataContext } from "context/data.context";
 
 const Hero = ({ state }) => {
   const [current, send] = useService(state);
-  const [{ totalNominal }, setState] = useContext(DataContext);
+  const [{ total }] = useContext(DataContext);
 
   return (
     <header
@@ -26,7 +26,7 @@ const Hero = ({ state }) => {
           <div css={heroContent}>
             <div>
               <span>Hutang</span>
-              <h2>Rp.{totalNominal}</h2>
+              <h2>Rp.{total}</h2>
             </div>
             <div>
               <span>Piutang</span>

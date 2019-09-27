@@ -13,7 +13,7 @@
 - [x] store Name data to search name input ( localStorage )
 - [x] store activities ( localStorage )
 - [x] update total hutang dan piutang di dashboard
-- [ ] fixing Context code
+- [x] fixing Context code
 - [x] setup a11y react
 - [x] rename toggle data & simplify code store data
 - [ ] responsive mobile view
