@@ -21,11 +21,12 @@
 - [ ] apps wishlists
 - [ ] apps calender
 - [ ] hitung piutang logic backend
-- [ ] check if name exist , merge the nominal data
+- [x] check if name exist , merge the nominal data
 - [ ] clickable option namelist
 - [ ] app loading redesign
 - [ ] update shortcutHome is different to other shortcuts
 - [ ] add event when open transaction , the home dashboard overlayed dark
+- [ ] add piutang field
 
 # REDESIGN
 
