@@ -9,7 +9,7 @@ const ListName = ({ filteredName, action }) => {
       {filteredName.map((data, i) => (
         <div key={i} onClick={() => action(data.name)}>
           <h4>{data.name}</h4>
-          <p>{data.nominal}</p>
+          <p>{Math.abs(data.nominal)}</p>
         </div>
       ))}
     </div>

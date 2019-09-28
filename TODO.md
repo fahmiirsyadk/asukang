@@ -20,13 +20,13 @@
 - [ ] offline change to sync/ not synced
 - [ ] apps wishlists
 - [ ] apps calender
-- [ ] hitung piutang logic backend
+- [x] hitung piutang logic backend
 - [x] check if name exist , merge the nominal data
 - [x] clickable option namelist
 - [ ] app loading redesign
 - [ ] update shortcutHome is different to other shortcuts
 - [x] add event when open transaction , the home dashboard overlayed dark
-- [ ] add piutang field
+- [x] add piutang field
 
 # REDESIGN
 

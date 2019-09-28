@@ -22,6 +22,7 @@ import { wrapperList, wrapperBtn, overlay, overlayContent } from "./style";
 const AsideTransaction = props => {
   const [name, setName] = useState("");
   const [nominal, setNominal] = useState(0);
+  const [selectedOpt, setSelectedOpt] = useState("hutang");
   const [current, send] = useMachine(transactionFlow);
   const [, dispatch] = useDataValue();
   const getData = getStorage("data");
@@ -37,7 +38,12 @@ const AsideTransaction = props => {
     setName(name);
   };
 
+  const handleOptionChange = e => {
+    setSelectedOpt(e.target.value);
+  };
+
   const submitData = e => {
+    console.log(selectedOpt);
     e.preventDefault();
     const date = new Date();
     const dataForm = {
@@ -47,9 +53,17 @@ const AsideTransaction = props => {
     };
 
     if (filtered.length > 0) {
-      const newNominal = filtered[0].nominal + dataForm.nominal;
+      const newNominal = state => {
+        return state === "hutang"
+          ? filtered[0].nominal + dataForm.nominal
+          : filtered[0].nominal - dataForm.nominal;
+      };
+      const statusData = newNominal(selectedOpt) < 0 ? "pihutang" : "hutang";
       const dataMutated = getData.filter(el => el.name !== filtered[0].name);
-      const final = [...dataMutated, { ...dataForm, nominal: newNominal }];
+      const final = [
+        ...dataMutated,
+        { ...dataForm, nominal: newNominal(selectedOpt), status: statusData }
+      ];
       dispatch({
         type: "getDataState",
         newData: final
@@ -83,11 +97,25 @@ const AsideTransaction = props => {
       </div>
       <div style={{ marginBottom: 20 }}>
         <div css={radioGroup}>
-          <input id="radio1" name="radio" type="radio" defaultChecked="true" />
+          <input
+            id="radio1"
+            name="radio"
+            type="radio"
+            value="hutang"
+            onChange={handleOptionChange}
+            checked={selectedOpt === "hutang"}
+          />
           <label htmlFor="radio1">Hutang</label>
         </div>
         <div css={radioGroup}>
-          <input id="radio2" name="radio" type="radio" />
+          <input
+            id="radio2"
+            name="radio"
+            value="piutang"
+            type="radio"
+            onChange={handleOptionChange}
+            checked={selectedOpt === "piutang"}
+          />
           <label htmlFor="radio2">Piutang</label>
         </div>
       </div>

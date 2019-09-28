@@ -26,11 +26,11 @@ const Hero = ({ state }) => {
           <div css={heroContent}>
             <div>
               <span>Hutang</span>
-              <h2>Rp.{total}</h2>
+              <h2>Rp.{total > 0 ? total : 0}</h2>
             </div>
             <div>
               <span>Piutang</span>
-              <h2>Rp.0</h2>
+              <h2>Rp.{total < 0 ? Math.abs(total) : 0}</h2>
             </div>
           </div>
           <button css={button} onClick={() => send("ACTIVE")}>
