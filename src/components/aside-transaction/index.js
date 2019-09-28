@@ -26,6 +26,7 @@ const AsideTransaction = props => {
   const [current, send] = useMachine(transactionFlow);
   const [, dispatch] = useDataValue();
   const getData = getStorage("data");
+  const getActivities = getStorage("activities");
   const filtered = filteredName(name);
 
   const onChangeNominal = e => {
@@ -49,7 +50,8 @@ const AsideTransaction = props => {
     const dataForm = {
       name: name,
       nominal: Number(nominal),
-      date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+      date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+      status: selectedOpt
     };
 
     if (filtered.length > 0) {
@@ -72,11 +74,35 @@ const AsideTransaction = props => {
     } else {
       dispatch({
         type: "getDataState",
-        newData: [...getData, dataForm]
+        newData: [
+          ...getData,
+          {
+            ...dataForm,
+            nominal:
+              selectedOpt === "hutang" ? Number(nominal) : -Math.abs(nominal),
+            status: selectedOpt
+          }
+        ]
       });
-      sendDataTransaction([...getData, dataForm]);
+      sendDataTransaction([
+        ...getData,
+        {
+          ...dataForm,
+          nominal:
+            selectedOpt === "hutang" ? Number(nominal) : -Math.abs(nominal),
+          status: selectedOpt
+        }
+      ]);
     }
-    sendDataActivities([...getData, dataForm]);
+    sendDataActivities([
+      ...getActivities,
+      {
+        ...dataForm,
+        nominal:
+          selectedOpt === "hutang" ? Number(nominal) : -Math.abs(nominal),
+        status: selectedOpt
+      }
+    ]);
   };
 
   return (
