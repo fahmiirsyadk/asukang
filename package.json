@@ -12,6 +12,7 @@
     "xstate": "^4.6.7"
   },
   "scripts": {
+    "postbuild": "react-snap",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -19,6 +20,9 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "reactSnap": {
+    "inlineCss": true
   },
   "browserslist": {
     "production": [
@@ -32,5 +36,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "react-snap": "^1.23.0"
+  }
 }
