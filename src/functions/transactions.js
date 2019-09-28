@@ -12,4 +12,4 @@ export const filteredName = name =>
   );
 
 export const sendDataTransaction = data => setStorage("data", data);
-export const sendDataActivities = data => setStorage("activies", data);
+export const sendDataActivities = data => setStorage("activities", data);

@@ -42,14 +42,14 @@ const AsideTransaction = props => {
     const date = new Date();
     const dataForm = {
       name: name,
-      hutang: Number(nominal),
+      nominal: Number(nominal),
       date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
     };
 
     if (filtered.length > 0) {
-      const newNominal = filtered[0].hutang + dataForm.hutang;
+      const newNominal = filtered[0].nominal + dataForm.nominal;
       const dataMutated = getData.filter(el => el.name !== filtered[0].name);
-      const final = [...dataMutated, { ...dataForm, hutang: newNominal }];
+      const final = [...dataMutated, { ...dataForm, nominal: newNominal }];
       dispatch({
         type: "getDataState",
         newData: final
@@ -62,7 +62,7 @@ const AsideTransaction = props => {
       });
       sendDataTransaction([...getData, dataForm]);
     }
-    sendDataActivities("activities", dataForm);
+    sendDataActivities([...getData, dataForm]);
   };
 
   return (

@@ -51,11 +51,12 @@ const App = () => {
   const [currentSrc, sendSrc, serviceSrc] = useMachine(switchShortcuts);
 
   // side-effect
-  checkLocalStorage();
+  checkLocalStorage("data");
+  checkLocalStorage("activities");
 
   const totalNominal = arr =>
     arr.reduce((val, element) => {
-      return Number(val) + Number(element.hutang);
+      return Number(val) + Number(element.nominal);
     }, 0);
 
   const initialState = {

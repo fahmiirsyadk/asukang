@@ -9,7 +9,7 @@ const ListName = ({ filteredName, action }) => {
       {filteredName.map((data, i) => (
         <div key={i} onClick={() => action(data.name)}>
           <h4>{data.name}</h4>
-          <p>{data.hutang}</p>
+          <p>{data.nominal}</p>
         </div>
       ))}
     </div>
