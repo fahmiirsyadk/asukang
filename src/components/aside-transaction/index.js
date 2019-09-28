@@ -33,6 +33,10 @@ const AsideTransaction = props => {
       : setNominal("");
   };
 
+  const selectedName = name => {
+    setName(name);
+  };
+
   const submitData = e => {
     e.preventDefault();
     const date = new Date();
@@ -74,7 +78,7 @@ const AsideTransaction = props => {
           autoFocus
         />
         <div css={wrapperList}>
-          <ListName filteredName={filtered} />
+          <ListName filteredName={filtered} action={selectedName} />
         </div>
       </div>
       <div style={{ marginBottom: 20 }}>
