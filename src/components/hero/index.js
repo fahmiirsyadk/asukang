@@ -2,8 +2,7 @@
 import React, { useContext } from "react";
 import { useService } from "@xstate/react";
 import { jsx, css } from "@emotion/core";
-import bg from "assets/images/bg.jpg";
-import { hero, overlay, heroContent } from "./style";
+import { overlay, heroContent } from "./style";
 import { button } from "components/styles";
 import { DataContext } from "context/data.context";
 
@@ -12,14 +11,7 @@ const Hero = ({ state }) => {
   const [{ total }] = useContext(DataContext);
 
   return (
-    <header
-      css={css`
-        ${hero};
-        background-image: url(${bg});
-        background-position: 50% center;
-        background-size: cover;
-      `}
-    >
+    <header>
       <div css={overlay}>
         <div css={{ width: "100%", textAlign: "center" }}>
           <span>Selamat malam, fahmi</span>
