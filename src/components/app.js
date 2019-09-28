@@ -6,6 +6,8 @@ import { DataProvider } from "context/data.context";
 import { getStorage } from "functions/local-storage";
 import { checkLocalStorage } from "functions/transactions";
 import { switchShortcuts } from "machines/machines";
+import { overlay } from "./styles";
+
 import Hero from "components/hero";
 import Aside from "components/aside";
 
@@ -37,6 +39,12 @@ const outerAside = css`
   ${colomn(1)};
   position: relative;
   min-width: 327px;
+`;
+
+export const overlayW = state => css`
+  ${overlay};
+  display: ${state ? "flex" : "none"};
+  z-index: 0;
 `;
 
 const App = () => {
@@ -73,10 +81,20 @@ const App = () => {
     <DataProvider initialState={initialState} reducer={reducer}>
       <Global styles={global} />
       <main css={mainS}>
-        <div css={[outerAside, { borderRight: "1px solid #eee" }]}>
+        <div
+          css={[
+            outerAside,
+            {
+              borderRight: "1px solid #eee",
+              backgroundColor: "white",
+              zIndex: 2
+            }
+          ]}
+        >
           <Aside state={serviceSrc} />
         </div>
-        <div css={colomn(3)}>
+        <div css={[colomn(3)]}>
+          <div css={overlayW(!currentSrc.matches("home"))}></div>
           <Hero state={serviceSrc} />
         </div>
       </main>

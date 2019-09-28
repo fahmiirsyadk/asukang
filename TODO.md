@@ -25,7 +25,7 @@
 - [x] clickable option namelist
 - [ ] app loading redesign
 - [ ] update shortcutHome is different to other shortcuts
-- [ ] add event when open transaction , the home dashboard overlayed dark
+- [x] add event when open transaction , the home dashboard overlayed dark
 - [ ] add piutang field
 
 # REDESIGN
