@@ -7,7 +7,6 @@
 - [ ] intergrate sync with firebase
 - [ ] offline & online sign
 - [ ] update / store firebase data ( not on mount, only when clicked )
-- [ ] setup React Helmet
 - [x] customHook to interact LocalStorage
 - [x] add option hutang / piutang
 - [x] store Name data to search name input ( localStorage )
@@ -27,6 +26,10 @@
 - [ ] update shortcutHome is different to other shortcuts
 - [x] add event when open transaction , the home dashboard overlayed dark
 - [x] add piutang field
+- [ ] dashboard cards
+- [ ] ecnrypt data and activities
+- [ ] add description on form transaction
+- [ ] add status on list name
 
 # REDESIGN
 
