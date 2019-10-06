@@ -112,7 +112,7 @@ const AsideTransaction = props => {
         <input
           type="text"
           value={name}
-          css={input}
+          css={[input, { paddingLeft: "2em" }]}
           onChange={e => setName(e.target.value)}
           placeholder="Masukkan nama tujuan"
           autoFocus

@@ -27,7 +27,7 @@ const Profile = ({ state }) => {
         {matches("home") ? (
           <AsideHome send={send} />
         ) : matches("transaction") ? (
-          <Suspense fallback={<AsideLoading />}>
+          <Suspense delayMs={1000} fallback={<AsideLoading />}>
             <AsideTransaction send={send} />
           </Suspense>
         ) : matches("wishlists") ? (

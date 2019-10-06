@@ -8,7 +8,8 @@ import { checkLocalStorage } from "functions/transactions";
 import { switchShortcuts } from "machines/machines";
 import { overlay } from "./styles";
 
-import Hero from "components/hero";
+import Dashboard from "components/dashboard";
+// import Hero from "components/hero";
 import Aside from "components/aside";
 
 const global = css`
@@ -86,7 +87,7 @@ const App = () => {
           css={[
             outerAside,
             {
-              borderRight: "1px solid #eee",
+              borderRight: "1px solid rgb(218, 220, 224)",
               backgroundColor: "white",
               zIndex: 2
             }
@@ -96,7 +97,8 @@ const App = () => {
         </div>
         <div css={[colomn(3)]}>
           <div css={overlayW(!currentSrc.matches("home"))}></div>
-          <Hero state={serviceSrc} />
+          <Dashboard />
+          {/** <Hero state={serviceSrc} /> */}
         </div>
       </main>
     </DataProvider>

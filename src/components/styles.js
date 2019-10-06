@@ -1,7 +1,7 @@
 import { css } from "@emotion/core";
 
-const primaryColor = "#5f80f5";
-const darkenPrimaryColor = "#5272F0";
+const primaryColor = "#1074e7";
+const darkenPrimaryColor = "#0366d6";
 
 // layout
 export const flex = css`
@@ -14,7 +14,7 @@ export const flexSpace = css`
   justify-content: space-between;
 `;
 
-const borderR3 = css`
+export const borderR3 = css`
   border-radius: 3px;
 `;
 
@@ -62,35 +62,19 @@ export const input = css`
 `;
 
 export const button = css`
-  min-width: 26px;
-  padding: 10px 15px;
-  border-radius: 3px;
-  background-color: #0fcb4d;
-  cursor: pointer;
-  font-size: 0.8em;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: 1px solid blue;
+  transition: 0.2s;
   font-weight: 600;
-  border: none;
-  &:hover,
-  &:focus {
-    background-color: #18f15f;
-  }
-`;
-
-export const buttonFull = css`
-  ${button};
-  padding: 10px 0;
-  width: 100%;
+  cursor: pointer;
+  ${borderR3};
 `;
 
 export const buttonPrimary = css`
+  ${button};
   background-color: ${primaryColor};
   color: white;
-  cursor: pointer;
-  font-weight: 600;
-  padding: 10px 20px;
-  font-size: 14px;
-  border: none;
-  ${borderR3};
   &:focus,
   &:hover {
     background-color: ${darkenPrimaryColor};
@@ -195,7 +179,6 @@ export const radioGroup = css`
   }
 
   input:checked ~ label {
-    border: 2px solid #54e0c7;
     &:before {
       transform: translate(-50%, -50%) scale3d(56, 56, 1);
       opacity: 1;
