@@ -50,7 +50,6 @@ const AsideTransaction = props => {
   };
 
   const submitData = e => {
-    console.log(selectedOpt);
     e.preventDefault();
     const date = new Date();
     const dataForm = {
@@ -68,29 +67,17 @@ const AsideTransaction = props => {
       };
       const statusData = newNominal(selectedOpt) < 0 ? "pihutang" : "hutang";
       const dataMutated = getData.filter(el => el.name !== filtered[0].name);
-      const final = [
+      const dataFinal = [
         ...dataMutated,
         { ...dataForm, nominal: newNominal(selectedOpt), status: statusData }
       ];
       dispatch({
         type: "getDataState",
-        newData: final
+        newData: dataFinal
       });
-      sendDataTransaction(final);
+      sendDataTransaction(dataFinal);
     } else {
-      dispatch({
-        type: "getDataState",
-        newData: [
-          ...getData,
-          {
-            ...dataForm,
-            nominal:
-              selectedOpt === "hutang" ? Number(nominal) : -Math.abs(nominal),
-            status: selectedOpt
-          }
-        ]
-      });
-      sendDataTransaction([
+      const dataFinal = [
         ...getData,
         {
           ...dataForm,
@@ -98,7 +85,12 @@ const AsideTransaction = props => {
             selectedOpt === "hutang" ? Number(nominal) : -Math.abs(nominal),
           status: selectedOpt
         }
-      ]);
+      ];
+      dispatch({
+        type: "getDataState",
+        newData: dataFinal
+      });
+      sendDataTransaction(dataFinal);
     }
     sendDataActivities([
       ...getActivities,
@@ -106,7 +98,7 @@ const AsideTransaction = props => {
         ...dataForm,
         nominal:
           selectedOpt === "hutang" ? Number(nominal) : -Math.abs(nominal),
-        status: selectedOpt
+        status: Number(nominal) === 0 ? "Lunas" : selectedOpt
       }
     ]);
   };
@@ -122,7 +114,6 @@ const AsideTransaction = props => {
               focusable="false"
               data-prefix="fas"
               data-icon="search"
-              class="svg-inline--fa fa-search fa-w-16"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"

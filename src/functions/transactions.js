@@ -11,5 +11,10 @@ export const filteredName = name =>
     data.name.toLowerCase().includes(name.toLowerCase())
   );
 
-export const sendDataTransaction = data => setStorage("data", data);
+export const sendDataTransaction = datas => {
+  const newDatas = datas.filter(data => data.nominal !== 0);
+  console.log(newDatas);
+  setStorage("data", newDatas);
+};
+
 export const sendDataActivities = data => setStorage("activities", data);
