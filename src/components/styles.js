@@ -85,9 +85,11 @@ export const buttonPrimaryG = css`
   ${buttonPrimary};
   background-color: white;
   color: ${primaryColor};
+  border: 2px solid ${primaryColor};
   &:focus,
   &:hover {
     background-color: white;
+    border: 2px solid ${darkenPrimaryColor};
   }
 `;
 
