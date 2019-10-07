@@ -64,7 +64,7 @@ export const input = css`
 export const button = css`
   padding: 10px 20px;
   font-size: 14px;
-  border: 1px solid blue;
+  border: none;
   transition: 0.2s;
   font-weight: 600;
   cursor: pointer;
@@ -85,11 +85,9 @@ export const buttonPrimaryG = css`
   ${buttonPrimary};
   background-color: white;
   color: ${primaryColor};
-  border: 2px solid ${primaryColor};
   &:focus,
   &:hover {
     background-color: white;
-    border: 2px solid ${darkenPrimaryColor};
   }
 `;
 
