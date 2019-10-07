@@ -1,3 +1,4 @@
+import search from "assets/images/search.svg";
 import { css } from "@emotion/core";
 
 export const overlay = css`
@@ -28,6 +29,19 @@ export const overlayContent = css`
 
 export const wrapperList = css`
   height: 40vh;
+`;
+
+export const spanSearchBox = css`
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 0.8rem;
+  margin-left: 0.5em;
+  height: 0.8rem;
+  line-height: 2.2rem;
+  text-align: center;
+  pointer-events: none;
+  color: #999;
 `;
 
 export const wrapperBtn = css`
