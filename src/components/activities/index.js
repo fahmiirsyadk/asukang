@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import React from "react";
-import { jsx } from "@emotion/core";
+
 import { activities, activityItem } from "./style";
 import { flexSpace, notificationBoxRed } from "components/styles";
 

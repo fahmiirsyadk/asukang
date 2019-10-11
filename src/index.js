@@ -1,5 +1,5 @@
 import React from "react";
-import { createRoot, hydrate, render } from "react-dom";
+import { hydrate, render } from "react-dom";
 import App from "components/app";
 import { Router } from "@reach/router";
 import * as serviceWorker from "serviceWorker";

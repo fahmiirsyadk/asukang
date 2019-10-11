@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import React, { Suspense, lazy } from "react";
-import { jsx } from "@emotion/core";
+
 import { useService } from "@xstate/react";
 import { aside } from "./style";
 import Shortcuts from "components/shortcuts";

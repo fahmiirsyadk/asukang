@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import React from "react";
-import { jsx } from "@emotion/core";
+
 import { shortcut } from "./style";
 
 const Shortcut = ({ action, activeTab, label, onClick }) => (

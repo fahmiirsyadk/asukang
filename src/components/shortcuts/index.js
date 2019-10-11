@@ -1,7 +1,5 @@
-/** @jsx jsx */
 import React, { useState } from "react";
 import { useService } from "@xstate/react";
-import { jsx, css } from "@emotion/core";
 import { shortcuts } from "./style";
 import Shortcut from "components/shortcut";
 

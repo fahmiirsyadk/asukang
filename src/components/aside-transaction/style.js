@@ -1,4 +1,3 @@
-import search from "assets/images/search.svg";
 import { css } from "@emotion/core";
 
 export const overlay = css`

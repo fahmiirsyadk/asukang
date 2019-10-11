@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import React from "react";
-import { jsx } from "@emotion/core";
+
 import { profileHeader, profileHeaderDetail } from "./style";
 import { buttonPrimaryFull } from "components/styles";
 

@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import React, { Suspense } from "react";
-import { jsx, Global, css } from "@emotion/core";
+import { Global, css } from "@emotion/core";
 import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/data.context";
 import { getStorage } from "functions/local-storage";

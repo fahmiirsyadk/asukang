@@ -1,7 +1,5 @@
-/** @jsx jsx */
 import React, { useContext } from "react";
 import { useService } from "@xstate/react";
-import { jsx, css } from "@emotion/core";
 import { overlay, heroContent } from "./style";
 import { button } from "components/styles";
 import { DataContext } from "context/data.context";
