@@ -9,6 +9,7 @@ import {
   radioGroup
 } from "components/styles";
 import { getStorage } from "functions/local-storage";
+import rupiahFormat from "functions/numeric";
 import {
   sendDataTransaction,
   sendDataActivities,
@@ -37,7 +38,7 @@ const AsideTransaction = props => {
 
   const onChangeNominal = e => {
     e.target.validity.valid && e.target.value >= 0
-      ? setNominal(e.target.value)
+      ? setNominal(Number(e.target.value))
       : setNominal("");
   };
 
@@ -156,7 +157,8 @@ const AsideTransaction = props => {
       </div>
       <div css={wrapperBtn}>
         <button css={buttonPrimaryFull} onClick={() => send("NEXT")}>
-          <span>{nominal !== "" ? nominal : 0}</span> Proses >
+          <span>{rupiahFormat("Rp.", nominal !== "" ? nominal : 0)}</span>{" "}
+          Proses >
         </button>
         <button css={buttonPrimaryGFull} onClick={() => props.send("HOME")}>
           Batalkan
