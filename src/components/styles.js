@@ -119,6 +119,12 @@ export const notificationBoxRed = css`
   color: #ea5e9a;
 `;
 
+export const notificationBoxGreen = css`
+  ${notificationBox};
+  background-color: #bffaff;
+  color: #166e75;
+`;
+
 // radio button
 export const radioGroup = css`
   input {

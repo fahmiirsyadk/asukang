@@ -29,9 +29,9 @@
 - [ ] dashboard cards
 - [ ] ecnrypt data and activities
 - [ ] add description on form transaction
-- [ ] add status on list name
+- [x] add status on list name
 - [ ] add warn when utang is higher than 500k
-- [ ] convert 1000 to 1.000,00 IDR / Rp.
+- [x] convert 1000 to 1.000,00 IDR / Rp.
 - [ ] add setTimeout on loading , pretend the user seeing the flashy loading
 - [ ] add password field when encrypt is ready
 - [ ] add menu to clear cache / localStorage
