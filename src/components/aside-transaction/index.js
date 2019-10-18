@@ -29,6 +29,7 @@ import {
 const AsideTransaction = props => {
   const [name, setName] = useState("");
   const [nominal, setNominal] = useState(0);
+  // const [disableSubmit, setDisableSubmit] = useState(true);
   const [selectedOpt, setSelectedOpt] = useState("hutang");
   const [current, send] = useMachine(transactionFlow);
   const [, dispatch] = useDataValue();
@@ -48,6 +49,12 @@ const AsideTransaction = props => {
 
   const handleOptionChange = e => {
     setSelectedOpt(e.target.value);
+  };
+
+  const onNext = () => {
+    if (name.length !== 0 && nominal.length !== 0) {
+      send("NEXT");
+    }
   };
 
   const submitData = e => {
@@ -156,7 +163,7 @@ const AsideTransaction = props => {
         />
       </div>
       <div css={wrapperBtn}>
-        <button css={buttonPrimaryFull} onClick={() => send("NEXT")}>
+        <button css={buttonPrimaryFull} onClick={() => onNext()}>
           <span>{rupiahFormat("Rp.", nominal !== "" ? nominal : 0)}</span>{" "}
           Proses >
         </button>
