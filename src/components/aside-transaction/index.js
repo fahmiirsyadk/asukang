@@ -110,7 +110,7 @@ const AsideTransaction = props => {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20, position: "relative" }}>
       <h2 style={{ marginBottom: 20 }}>Transaksi</h2>
       <div>
         <div css={{ position: "relative" }}>
