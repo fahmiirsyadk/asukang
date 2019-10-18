@@ -43,7 +43,7 @@ export const wrapperList = css`
     border-radius: 100%;
     object-fit: cover;
   }
-  p {
+  #empty-desc {
     color: #616d7d;
     font-size: 14px;
     font-weight: 600;

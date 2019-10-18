@@ -150,7 +150,7 @@ const AsideTransaction = props => {
                   alt="ilustrasi_data_kosong"
                 />
               </div>
-              <p>Tidak ada list, silahkan tambahkan orang</p>
+              <p id="empty-desc">Tidak ada list, silahkan tambahkan orang</p>
             </React.Fragment>
           ) : null}
           <ListName filteredName={filtered} action={selectedName} />
