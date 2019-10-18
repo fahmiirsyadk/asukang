@@ -24,6 +24,6 @@ export const profileHeaderDetail = css`
   p {
     margin: 0.4em 0;
     font-size: 14px;
-    color: #8291a5;
+    color: #616d7d;
   }
 `;

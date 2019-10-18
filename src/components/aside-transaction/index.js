@@ -24,6 +24,7 @@ import {
   overlayContent,
   spanSearchBox
 } from "./style";
+import imgEmpty from "assets/images/empty.png";
 
 const AsideTransaction = props => {
   const [name, setName] = useState("");
@@ -140,6 +141,18 @@ const AsideTransaction = props => {
           />
         </div>
         <div css={wrapperList}>
+          {filtered.length < 1 ? (
+            <React.Fragment>
+              <div id="empty">
+                <img
+                  css={{ width: 50 }}
+                  src={imgEmpty}
+                  alt="ilustrasi_data_kosong"
+                />
+              </div>
+              <p>Tidak ada list, silahkan tambahkan orang</p>
+            </React.Fragment>
+          ) : null}
           <ListName filteredName={filtered} action={selectedName} />
         </div>
       </div>
