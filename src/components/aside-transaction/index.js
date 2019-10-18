@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { useMachine } from "@xstate/react";
 import RadioSelect from "./radio";
 import {
@@ -29,7 +28,6 @@ import {
 const AsideTransaction = props => {
   const [name, setName] = useState("");
   const [nominal, setNominal] = useState(0);
-  // const [disableSubmit, setDisableSubmit] = useState(true);
   const [selectedOpt, setSelectedOpt] = useState("hutang");
   const [current, send] = useMachine(transactionFlow);
   const [, dispatch] = useDataValue();

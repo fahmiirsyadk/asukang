@@ -1,5 +1,5 @@
 import React from "react";
-
+import imgNew from "assets/images/new.png";
 import { profileHeader, profileHeaderDetail } from "./style";
 import { buttonPrimaryFull } from "components/styles";
 
@@ -8,6 +8,7 @@ const AsideHome = ({ send }) => {
     <div css={profileHeader}>
       <div css={{ textAlign: "center", width: "100%" }}>
         <div css={profileHeaderDetail}>
+          <img src={imgNew} alt="ilustrasi_gambar" />
           <h4>Asukang App</h4>
           <p>Welcome back, Guest.</p>
         </div>

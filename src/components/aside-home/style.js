@@ -4,12 +4,14 @@ export const profileHeader = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 80%;
   background-color: white;
   padding: 2em;
   width: inherit;
   min-width: 255px;
   img {
     width: 100px;
+    user-drag: none;
     height: 100px;
     border-radius: 100%;
     object-fit: cover;
