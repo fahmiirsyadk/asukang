@@ -24,7 +24,6 @@ const wrapper = css`
     -ms-user-drag: none;
     user-drag: none;
     height: 150px;
-    border-radius: 100%;
     object-fit: cover;
   }
   #empty-desc {
