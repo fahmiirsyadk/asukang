@@ -5,6 +5,7 @@ import { aside } from "./style";
 import Shortcuts from "components/shortcuts";
 import AsideLoading from "components/aside-loading";
 import AsideHome from "components/aside-home";
+import NotFound from "components/not-found";
 const AsideTransaction = lazy(() => import("components/aside-transaction"));
 
 const dataShortcuts = [
@@ -30,7 +31,7 @@ const Profile = ({ state }) => {
             <AsideTransaction send={send} />
           </Suspense>
         ) : matches("wishlists") ? (
-          <p>Not found</p>
+          <NotFound />
         ) : null}
       </div>
     </aside>
