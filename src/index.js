@@ -1,25 +1,22 @@
 import React from "react";
 import { hydrate, render } from "react-dom";
 import App from "components/app";
+import RouteNotFound from "components/404";
 import { Router } from "@reach/router";
 import * as serviceWorker from "serviceWorker";
 
 const rootElement = document.getElementById("root");
+let jsxElements = (
+  <Router>
+    <App path="/" />
+    <RouteNotFound default />
+  </Router>
+);
 
 if (rootElement.hasChildNodes()) {
-  hydrate(
-    <Router>
-      <App path="/" />
-    </Router>,
-    rootElement
-  );
+  hydrate(jsxElements, rootElement);
 } else {
-  render(
-    <Router>
-      <App path="/" />
-    </Router>,
-    rootElement
-  );
+  render(jsxElements, rootElement);
 }
 
 // If you want your app to work offline and load faster, you can change
