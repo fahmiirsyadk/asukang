@@ -14,12 +14,13 @@ const Shortcuts = ({ state, data }) => {
   return (
     <div css={shortcuts} aria-label="tablist">
       {data.map(child => {
-        const { label } = child;
+        const { label, icon } = child;
         return (
           <Shortcut
             activeTab={active}
             key={label}
             label={label}
+            icon={icon}
             onClick={onClickShortcutItem}
             action={() => send(String(label).toUpperCase())}
           />

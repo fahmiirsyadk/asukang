@@ -7,6 +7,7 @@ const outerWrapper = css`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 2em;
 `;
 
 const wrapper = css`

@@ -1,5 +1,8 @@
 import React, { Suspense, lazy } from "react";
 
+import iconHome from "assets/images/home.png";
+import iconWishlist from "assets/images/wishlist.png";
+
 import { useService } from "@xstate/react";
 import { aside } from "./style";
 import Shortcuts from "components/shortcuts";
@@ -10,10 +13,12 @@ const AsideTransaction = lazy(() => import("components/aside-transaction"));
 
 const dataShortcuts = [
   {
-    label: "Home"
+    label: "Home",
+    icon: iconHome
   },
   {
-    label: "Wishlists"
+    label: "Wishlists",
+    icon: iconWishlist
   }
 ];
 

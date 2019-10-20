@@ -2,7 +2,7 @@ import React from "react";
 
 import { shortcut } from "./style";
 
-const Shortcut = ({ action, activeTab, label, onClick }) => (
+const Shortcut = ({ action, activeTab, label, onClick, icon }) => (
   <div
     css={shortcut(activeTab === label)}
     aria-label={label}
@@ -14,7 +14,7 @@ const Shortcut = ({ action, activeTab, label, onClick }) => (
       action();
     }}
   >
-    <p>{label}</p>
+    <img src={icon} alt={label} />
   </div>
 );
 
