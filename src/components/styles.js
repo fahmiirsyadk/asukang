@@ -191,8 +191,8 @@ export const radioGroup = css`
     }
 
     &:after {
-      background-color: #54e0c7;
-      border-color: #54e0c7;
+      background-color: #49d3b4;
+      border-color: #49d3b4;
     }
   }
 `;
