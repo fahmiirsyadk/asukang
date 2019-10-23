@@ -1,5 +1,6 @@
 import React from "react";
 import { Global, css } from "@emotion/core";
+import { useMediaQuery } from "react-responsive";
 import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/data.context";
 import { getStorage } from "functions/local-storage";
@@ -35,7 +36,7 @@ const colomn = flex => css`
 `;
 
 const outerAside = css`
-  ${colomn(1)};
+  ${colomn(1.2)};
   position: relative;
   min-width: 327px;
 `;
@@ -48,6 +49,7 @@ export const overlayW = state => css`
 
 const App = () => {
   const [currentSrc, sendSrc, serviceSrc] = useMachine(switchShortcuts);
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   // side-effect
   checkLocalStorage("data");
@@ -93,10 +95,12 @@ const App = () => {
         >
           <Aside state={serviceSrc} />
         </div>
-        <div css={[colomn(3)]}>
-          <div css={overlayW(!currentSrc.matches("home"))}></div>
-          <Dashboard />
-        </div>
+        {!isTabletOrMobile && (
+          <div css={[colomn(3)]}>
+            <div css={overlayW(!currentSrc.matches("home"))}></div>
+            <Dashboard />
+          </div>
+        )}
       </main>
     </DataProvider>
   );

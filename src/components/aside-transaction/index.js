@@ -167,7 +167,7 @@ const AsideTransaction = props => {
         <input
           css={input}
           pattern="[0-9]*"
-          inputmode="numeric"
+          inputMode="numeric"
           onChange={onChangeNominal}
           value={nominal}
           placeholder="Masukkan nominal uang"
