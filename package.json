@@ -15,15 +15,13 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "build": "react-app-rewired build ",
+    "test": "react-app-rewired test --env=jsdom",
+    "analyze": "node analyze.js",
     "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "reactSnap": {
-    "inlineCss": true
   },
   "browserslist": {
     "production": [
@@ -39,6 +37,8 @@
   },
   "devDependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.17",
-    "react-snap": "^1.23.0"
+    "chalk": "^2.4.2",
+    "progress-bar-webpack-plugin": "^1.12.1",
+    "webpack-bundle-analyzer": "^3.6.0"
   }
 }
