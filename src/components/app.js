@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Global, css } from "@emotion/core";
 import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/data.context";
@@ -8,7 +8,6 @@ import { switchShortcuts } from "machines/machines";
 import { overlay } from "./styles";
 
 import Dashboard from "components/dashboard";
-// import Hero from "components/hero";
 import Aside from "components/aside";
 
 const global = css`
@@ -97,7 +96,6 @@ const App = () => {
         <div css={[colomn(3)]}>
           <div css={overlayW(!currentSrc.matches("home"))}></div>
           <Dashboard />
-          {/** <Hero state={serviceSrc} /> */}
         </div>
       </main>
     </DataProvider>

@@ -23,7 +23,7 @@
 - [x] check if name exist , merge the nominal data
 - [x] clickable option namelist
 - [ ] app loading redesign
-- [ ] update shortcutHome is different to other shortcuts
+- [x] update shortcutHome is different to other shortcuts
 - [x] add event when open transaction , the home dashboard overlayed dark
 - [x] add piutang field
 - [ ] dashboard cards
@@ -32,7 +32,7 @@
 - [x] add status on list name
 - [ ] add warn when utang is higher than 500k
 - [x] convert 1000 to 1.000,00 IDR / Rp.
-- [ ] add setTimeout on loading , pretend the user seeing the flashy loading
+- [x] add setTimeout on loading , pretend the user seeing the flashy loading
 - [ ] add password field when encrypt is ready
 - [ ] add menu to clear cache / localStorage
 - [ ] add feature to export the data , later you can import it ( encrypted )

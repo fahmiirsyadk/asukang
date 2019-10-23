@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-
+import { useMediaQuery } from "react-responsive";
 import iconHome from "assets/images/home.png";
 import iconWishlist from "assets/images/wishlist.png";
 
@@ -25,9 +25,21 @@ const dataShortcuts = [
 const Profile = ({ state }) => {
   const [{ matches }, send] = useService(state);
 
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-device-width: 1224px)"
+  });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
+
   return (
     <aside css={aside}>
-      <Shortcuts state={state} data={dataShortcuts} />
+      {isDesktopOrLaptop && (
+        <React.Fragment>
+          {!isTabletOrMobile && (
+            <Shortcuts state={state} data={dataShortcuts} />
+          )}
+        </React.Fragment>
+      )}
+
       <div id="aside-content">
         {matches("home") ? (
           <AsideHome send={send} />
