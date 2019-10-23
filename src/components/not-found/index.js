@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
-import imgNotFound from "assets/images/not-found.png";
+import imgNotFound from "assets/images/error.png";
 
 const outerWrapper = css`
   display: flex;

@@ -1,17 +1,10 @@
 import React from "react";
 import { hydrate, render } from "react-dom";
 import App from "components/app";
-import RouteNotFound from "components/404";
-import { Router } from "@reach/router";
 import * as serviceWorker from "serviceWorker";
 
 const rootElement = document.getElementById("root");
-let jsxElements = (
-  <Router>
-    <App path="/" />
-    <RouteNotFound default />
-  </Router>
-);
+let jsxElements = <App />;
 
 if (rootElement.hasChildNodes()) {
   hydrate(jsxElements, rootElement);

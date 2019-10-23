@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.0.21",
-    "@reach/router": "^1.2.1",
     "@xstate/react": "^0.7.1",
     "customize-cra": "^0.8.0",
     "react": "^16.9.0",
