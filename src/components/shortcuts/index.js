@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useService } from "@xstate/react";
-import { shortcuts } from "./style";
+import { shortcuts, shortcuts__mobile } from "./style";
 import Shortcut from "components/shortcut";
 
-const Shortcuts = ({ state, data }) => {
+const Shortcuts = ({ state, data, mobile }) => {
   const [current, send] = useService(state);
   const [active, setActive] = useState(data[0].label);
 
@@ -12,7 +12,10 @@ const Shortcuts = ({ state, data }) => {
   };
 
   return (
-    <div css={shortcuts} aria-label="tablist">
+    <div
+      css={mobile ? [shortcuts] : [shortcuts, shortcuts__mobile]}
+      aria-label="tablist"
+    >
       {data.map(child => {
         const { label, icon } = child;
         return (

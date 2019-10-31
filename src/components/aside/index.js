@@ -33,11 +33,11 @@ const Profile = ({ state }) => {
   return (
     <aside css={aside}>
       {isDesktopOrLaptop && (
-        <React.Fragment>
-          {!isTabletOrMobile && (
-            <Shortcuts state={state} data={dataShortcuts} />
-          )}
-        </React.Fragment>
+        <Shortcuts
+          state={state}
+          data={dataShortcuts}
+          mobile={!isTabletOrMobile}
+        />
       )}
 
       <div id="aside-content">
