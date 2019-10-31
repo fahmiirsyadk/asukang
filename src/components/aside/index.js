@@ -36,7 +36,7 @@ const Profile = ({ state }) => {
         <Shortcuts
           state={state}
           data={dataShortcuts}
-          mobile={isTabletOrMobile}
+          mobile={!isTabletOrMobile}
         />
       )}
 
