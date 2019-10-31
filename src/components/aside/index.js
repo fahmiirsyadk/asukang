@@ -28,7 +28,9 @@ const Profile = ({ state }) => {
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-device-width: 1224px)"
   });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  const isTabletOrMobile = useMediaQuery({
+    query: "(min-device-width: 500px)"
+  });
 
   return (
     <aside css={aside}>
