@@ -171,6 +171,7 @@ const AsideTransaction = props => {
           onChange={onChangeNominal}
           value={nominal}
           placeholder="Masukkan nominal uang"
+          onKeyUp={e => (e.keyCode === 13 ? onNext() : null)}
         />
       </div>
       <div css={wrapperBtn}>
@@ -189,6 +190,7 @@ const AsideTransaction = props => {
             <p>klik kembali untuk mengganti atau membatalkan transaksi</p>
             <button
               css={buttonPrimaryFull}
+              autoFocus
               onClick={e => {
                 setName("");
                 setNominal(0);

@@ -18,7 +18,7 @@ export const shortcuts__mobile = css`
   height: 50px;
   justify-content: center;
   border-top: 1px solid #eee;
-
+  z-index: 1;
   div[role="tab"] {
     margin-right: 5px;
   }

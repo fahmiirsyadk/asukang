@@ -15,7 +15,7 @@
 - [x] fixing Context code
 - [x] setup a11y react
 - [x] rename toggle data & simplify code store data
-- [ ] responsive mobile view
+- [x] responsive mobile view
 - [ ] offline change to sync/ not synced
 - [ ] apps wishlists
 - [ ] apps calender
