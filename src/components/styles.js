@@ -196,3 +196,16 @@ export const radioGroup = css`
     }
   }
 `;
+
+export const spanSearchBox = css`
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 0.8rem;
+  margin-left: 0.5em;
+  height: 0.8rem;
+  line-height: 2.2rem;
+  text-align: center;
+  pointer-events: none;
+  color: #999;
+`;

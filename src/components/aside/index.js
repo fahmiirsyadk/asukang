@@ -10,6 +10,7 @@ import AsideLoading from "components/aside-loading";
 import AsideHome from "components/aside-home";
 import NotFound from "components/not-found";
 const AsideTransaction = lazy(() => import("components/aside-transaction"));
+const AsideDebts = lazy(() => import("components/aside-debts"));
 
 const dataShortcuts = [
   {
@@ -18,6 +19,10 @@ const dataShortcuts = [
   },
   {
     label: "Wishlists",
+    icon: iconWishlist
+  },
+  {
+    label: "debts",
     icon: iconWishlist
   }
 ];
@@ -37,11 +42,15 @@ const Profile = ({ state }) => {
         {matches("home") ? (
           <AsideHome send={send} />
         ) : matches("transaction") ? (
-          <Suspense delayMs={1000} fallback={<AsideLoading />}>
+          <Suspense fallback={<AsideLoading />}>
             <AsideTransaction send={send} />
           </Suspense>
         ) : matches("wishlists") ? (
           <NotFound />
+        ) : matches("debts") ? (
+          <Suspense fallback={<AsideLoading />}>
+            <AsideDebts send={send} />
+          </Suspense>
         ) : null}
       </div>
     </aside>

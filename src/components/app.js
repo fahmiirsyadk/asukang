@@ -5,7 +5,7 @@ import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/data.context";
 import { getStorage } from "functions/local-storage";
 import { checkLocalStorage } from "functions/transactions";
-import { switchShortcuts } from "machines/machines";
+import { switchShortcuts } from "machines";
 import { overlay } from "./styles";
 
 import Dashboard from "components/dashboard";
