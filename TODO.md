@@ -34,7 +34,10 @@
 - [x] convert 1000 to 1.000,00 IDR / Rp.
 - [x] add setTimeout on loading , pretend the user seeing the flashy loading
 - [ ] add password field when encrypt is ready
-- [ ] add menu to clear cache / localStorage
+- [x] add menu to clear cache / localStorage
+- [ ] add transaction confirmation using Qrcode
+- [ ] add clear button on input
+- [ ] add popup detail utang piutang item
 - [ ] add feature to export the data , later you can import it ( encrypted )
 
 # REDESIGN

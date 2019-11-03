@@ -23,7 +23,7 @@ import { wrapperBtn } from "./style";
 const AsideTransaction = props => {
   const [name, setName] = useState("");
   const [nominal, setNominal] = useState(0);
-  const [selectedOpt, setSelectedOpt] = useState("hutang");
+  const [selectedOpt, setSelectedOpt] = useState("utang");
   const [current, send] = useMachine(transactionFlow);
   const [, dispatch] = useDataValue();
   const getData = getStorage("data");
@@ -42,14 +42,7 @@ const AsideTransaction = props => {
 
   const onConfirmation = () => {
     if (name.length !== 0 && nominal.length !== 0) {
-      if (filtered.length > 0 && getData.filter(el => el.name !== name)) {
-        send("OVERWRITE");
-      } else if (name === "UNSAFE--HARD-RESET") {
-        sendDataTransaction([]);
-        sendDataActivities([]);
-      } else {
-        send("CONFIRMATION");
-      }
+      send("CONFIRMATION");
     }
   };
 
@@ -69,26 +62,44 @@ const AsideTransaction = props => {
       date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
       status: selectedOpt
     };
-    const dataFinal = [
-      ...getData,
-      {
-        ...dataForm,
-        nominal:
-          selectedOpt === "hutang" ? Number(nominal) : -Math.abs(nominal),
-        status: selectedOpt
-      }
-    ];
-    dispatch({
-      type: "getDataState",
-      newData: dataFinal
-    });
-    sendDataTransaction(dataFinal);
+    if (filtered.length > 0) {
+      const newNominal = state => {
+        return state === "utang"
+          ? filtered[0].nominal + dataForm.nominal
+          : filtered[0].nominal - dataForm.nominal;
+      };
+      const statusData = newNominal(selectedOpt) < 0 ? "piutang" : "utang";
+      const filteredData = getData.filter(el => el.name !== filtered[0].name);
+      const finalData = [
+        ...filteredData,
+        { ...dataForm, nominal: newNominal(selectedOpt), status: statusData }
+      ];
+      dispatch({
+        type: "getDataState",
+        newData: finalData
+      });
+      sendDataTransaction(finalData);
+    } else {
+      const finalData = [
+        ...getData,
+        {
+          ...dataForm,
+          nominal:
+            selectedOpt === "utang" ? Number(nominal) : -Math.abs(nominal),
+          status: selectedOpt
+        }
+      ];
+      dispatch({
+        type: "getDataState",
+        newData: finalData
+      });
+      sendDataTransaction(finalData);
+    }
     sendDataActivities([
       ...getActivities,
       {
         ...dataForm,
-        nominal:
-          selectedOpt === "hutang" ? Number(nominal) : -Math.abs(nominal),
+        nominal: selectedOpt === "utang" ? Number(nominal) : -Math.abs(nominal),
         status: Number(nominal) === 0 ? "Lunas" : selectedOpt
       }
     ]);
@@ -151,27 +162,22 @@ const AsideTransaction = props => {
         </button>
       </div>
       {current.matches("confirmation") ? (
-        <AsideOverlay
-          content={[
-            "Apakah anda yakin ?",
-            "Klik kembali untuk mengganti atau membatalkan transaksi",
-            "Yakin, konfirmasi"
-          ]}
-          submit={e => preSubmitData(e)}
-          cancelFirst={false}
-          cancel={() => send("BACK")}
-        />
-      ) : current.matches("overwrite") ? (
-        <AsideOverlay
-          content={[
-            "Apakah anda yakin ?",
-            "Nama yang anda inputkan telah terdaftar, apakah mereka orang yang sama ?",
-            "Lanjutkan, mereka orang yang berbeda"
-          ]}
-          cancelFirst={true}
-          submit={e => preSubmitData(e)}
-          cancel={() => send("BACK")}
-        />
+        <AsideOverlay>
+          <h3>Apakah anda yakin ?</h3>
+          <p>Klik kembali untuk mengganti atau membatalkan transaksi</p>
+          <React.Fragment>
+            <button
+              css={buttonPrimaryFull}
+              autoFocus
+              onClick={e => preSubmitData(e)}
+            >
+              Yakin, konfirmasi
+            </button>
+            <button css={buttonPrimaryGFull} onClick={() => send("BACK")}>
+              Kembali
+            </button>
+          </React.Fragment>
+        </AsideOverlay>
       ) : null}
     </div>
   );

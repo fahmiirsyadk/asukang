@@ -8,11 +8,11 @@ const RadioSelect = ({ handleOptionChange, selectedOpt }) => (
         id="radio1"
         name="radio"
         type="radio"
-        value="hutang"
+        value="utang"
         onChange={handleOptionChange}
-        checked={selectedOpt === "hutang"}
+        checked={selectedOpt === "utang"}
       />
-      <label htmlFor="radio1">Hutang</label>
+      <label htmlFor="radio1">Utang</label>
     </div>
     <div css={radioGroup}>
       <input

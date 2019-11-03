@@ -1,0 +1,20 @@
+# BARCODE 
+
+
+# FLOW TRANSACTION
+
+                 -> [BARCODE]---->[BARCODE_TEMAN]-->[CONFIRMATION]--[TRANSACTION_BILL]->[ADDED_TO_LIST]
+[NEW TRANSACTION]->[INPUT_NAME]----------->[CONFIRMATION]--[LOADING_DONE]--[TRANSACTION_BILL]->[ADDED_TO_LIST]
+                   [INPUT_NOMINAL]-->[OVERWRITE]--|---[LOADING_DONE]-->--[TRANSACTION_BILL]->[ADDED TO LIST]
+                   [INPUT_DESC]            |      |
+                   [INPUT_STATE]           |      |
+                   [INPUT_DATE]            |      |
+                        |                  |      |
+                        |                 \ /    \ /
+                        |<=====<==================|
+
+# PAY
+[CLICK_ITEM_LIST]-->[TAMBAH_UTANG/TAMBAH_PIUTANG]------------>[CONFIRMAION]-->[LOADING_DONE]
+                    [DESC]                           ||          /\
+                                                     \/          ||
+                                                 [BARCODE]->[BARCDODE_TEMEN]

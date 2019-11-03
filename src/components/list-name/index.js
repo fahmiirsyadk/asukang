@@ -7,7 +7,7 @@ const ListName = ({ filteredName, action }) => {
   return (
     <div css={listWrapper}>
       {filteredName.map((data, i) => {
-        const isUtang = data.status === "hutang" ? true : false;
+        const isUtang = data.status === "utang" ? true : false;
         return data.nominal !== 0 ? (
           <div
             css={{ position: "Relative" }}
