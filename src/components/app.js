@@ -63,6 +63,7 @@ const App = () => {
   const initialState = {
     data: [],
     activities: [],
+    id: getStorage("name"),
     total: totalNominal(getStorage("data"))
   };
 
@@ -73,6 +74,11 @@ const App = () => {
           ...state,
           data: action.newData,
           total: totalNominal(action.newData)
+        };
+      case "getName":
+        return {
+          ...state,
+          id: action.newData
         };
       default:
         return state;
