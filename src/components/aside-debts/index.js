@@ -1,20 +1,33 @@
 import React, { useState } from "react";
 import ListName from "components/list-name";
+import AsideOverlay from "components/aside-overlay";
 import { filteredName } from "functions/transactions";
+import { buttonPrimaryFull, buttonPrimaryGFull } from "components/styles";
 import { wrapperList } from "./style";
 import { input, spanSearchBox } from "components/styles";
 import imgEmpty from "assets/images/empty.png";
 
 const AsideDebts = () => {
   const [name, setName] = useState("");
+  const [open, setOpen] = useState(false);
   const filtered = filteredName(name);
 
   const selectedName = name => {
+    setOpen(true);
     setName(name);
   };
 
   return (
     <div style={{ padding: 20, position: "relative", height: "100%" }}>
+      {open ? (
+        <AsideOverlay>
+          <h3>{name}</h3>
+          <button css={buttonPrimaryFull}>EDIT</button>
+          <button css={buttonPrimaryGFull} onClick={() => setOpen(false)}>
+            KEMBALI
+          </button>
+        </AsideOverlay>
+      ) : null}
       <h2 style={{ marginBottom: 20 }}>Utang Piutang</h2>
       <div css={{ position: "relative" }}>
         <span css={spanSearchBox}>

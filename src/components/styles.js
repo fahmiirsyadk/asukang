@@ -131,7 +131,7 @@ export const radioGroup = css`
     width: 32px;
     height: 32px;
     order: 1;
-    z-index: 2;
+    z-index: 1;
     position: absolute;
     right: 30px;
     top: 50%;
@@ -148,7 +148,7 @@ export const radioGroup = css`
     color: #3c454c;
     cursor: pointer;
     position: relative;
-    z-index: 2;
+    z-index: 1;
     transition: color 200ms ease-in;
     overflow: hidden;
 
@@ -174,7 +174,7 @@ export const radioGroup = css`
       background-repeat: no-repeat;
       background-position: 2px 3px;
       border-radius: 50%;
-      z-index: 2;
+      z-index: 1;
       position: absolute;
       right: 0px;
       top: 50%;
@@ -199,7 +199,7 @@ export const radioGroup = css`
 
 export const spanSearchBox = css`
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   display: block;
   width: 0.8rem;
   margin-left: 0.5em;

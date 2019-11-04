@@ -65,7 +65,7 @@ const Profile = ({ state }) => {
             <h1>HELLO</h1>
             <input inputMode="text" onChange={e => setName(e.target.value)} />
             <div>
-              <button css={buttonPrimary} onClick={() => setUUID()}>
+              <button css={buttonPrimary} onClick={setUUID}>
                 MULAI >
               </button>
             </div>

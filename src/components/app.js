@@ -41,9 +41,10 @@ const outerAside = css`
   min-width: 327px;
 `;
 
-export const overlayW = state => css`
+const overlayW = state => css`
   ${overlay};
   display: ${state ? "flex" : "none"};
+  user-select: none;
   z-index: 0;
 `;
 
@@ -103,7 +104,11 @@ const App = () => {
         </div>
         {!isTabletOrMobile && (
           <div css={[colomn(3)]}>
-            <div css={overlayW(!currentSrc.matches("home"))}></div>
+            <div
+              css={overlayW(
+                !currentSrc.matches("home") || getStorage("id") === null
+              )}
+            ></div>
             <Dashboard />
           </div>
         )}
