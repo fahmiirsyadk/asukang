@@ -7,7 +7,9 @@ import {
   buttonPrimaryFull,
   buttonPrimaryGFull,
   radioGroup,
-  spanSearchBox
+  spanSearchBox,
+  labelInput,
+  textarea
 } from "components/styles";
 import { getStorage } from "functions/local-storage";
 import rupiahFormat from "functions/numeric";
@@ -22,6 +24,7 @@ import { wrapperBtn } from "./style";
 
 const AsideTransaction = props => {
   const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
   const [nominal, setNominal] = useState(0);
   const [selectedOpt, setSelectedOpt] = useState("utang");
   const [current, send] = useMachine(transactionFlow);
@@ -41,13 +44,14 @@ const AsideTransaction = props => {
   };
 
   const onConfirmation = () => {
-    if (name.length !== 0 && nominal.length !== 0) {
+    if (name.length !== 0 && nominal.length !== 0 && desc.length !== 0) {
       send("CONFIRMATION");
     }
   };
 
   const preSubmitData = e => {
     setName("");
+    setDesc("");
     setNominal(0);
     submitData(e);
     send("PROCESS");
@@ -58,6 +62,7 @@ const AsideTransaction = props => {
     const date = new Date();
     const dataForm = {
       name: name,
+      description: desc,
       nominal: Number(nominal),
       date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
       status: selectedOpt
@@ -127,12 +132,26 @@ const AsideTransaction = props => {
         </span>
         <input
           type="text"
+          id="nama_input"
           value={name}
           css={[input, { paddingLeft: "2em" }]}
           onChange={e => setName(e.target.value)}
-          placeholder="Masukkan nama tujuan"
+          placeholder="Tambahkan nama tujuan"
           autoFocus
         />
+      </div>
+      <div style={{ margin: "1em 0 " }}>
+        <label css={labelInput} htmlFor="description">
+          Deskripsi:
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          rows="2"
+          onChange={e => setDesc(e.target.value)}
+          placeholder="Misal: hutang telor ke warung mbak jum"
+          css={textarea}
+        ></textarea>
       </div>
       <div style={{ marginBottom: 20 }}>
         <RadioSelect
@@ -154,7 +173,10 @@ const AsideTransaction = props => {
       </div>
       <div css={wrapperBtn}>
         <button css={buttonPrimaryFull} onClick={() => onConfirmation()}>
-          <span>{rupiahFormat(nominal !== "" ? nominal : 0)}</span> Proses >
+          <span css={{ color: "white", fontWeight: 700 }}>
+            {rupiahFormat(nominal !== "" ? nominal : 0)}
+          </span>{" "}
+          Proses >
         </button>
         <button css={buttonPrimaryGFull} onClick={() => props.send("HOME")}>
           Batalkan

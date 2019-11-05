@@ -12,7 +12,7 @@ const RadioSelect = ({ handleOptionChange, selectedOpt }) => (
         onChange={handleOptionChange}
         checked={selectedOpt === "utang"}
       />
-      <label htmlFor="radio1">Utang</label>
+      <label htmlFor="radio1">Anda berhutang (utang)</label>
     </div>
     <div css={radioGroup}>
       <input
@@ -23,7 +23,7 @@ const RadioSelect = ({ handleOptionChange, selectedOpt }) => (
         onChange={handleOptionChange}
         checked={selectedOpt === "piutang"}
       />
-      <label htmlFor="radio2">Piutang</label>
+      <label htmlFor="radio2">Dia berhutang (piutang)</label>
     </div>
   </>
 );

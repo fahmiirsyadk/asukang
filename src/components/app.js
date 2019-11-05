@@ -16,8 +16,13 @@ const global = css`
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    color: #1b2d40;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    label {
+      font-size: 14px;
+      font-weight: 500;
+    }
   }
 `;
 

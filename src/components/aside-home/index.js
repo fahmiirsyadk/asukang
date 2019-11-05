@@ -16,7 +16,7 @@ const AsideHome = ({ send }) => {
           <p>Welcome, {id}.</p>
         </div>
         <button css={buttonPrimaryFull} onClick={() => send("TRANSACTION")}>
-          + New Transaction
+          + Buat transaksi baru
         </button>
       </div>
     </div>

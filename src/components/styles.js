@@ -41,6 +41,12 @@ export const modal = css`
   ${borderR3};
 `;
 
+export const labelInput = css`
+  margin: 5px 0;
+  display: inline-block;
+  color: #3c454c;
+`;
+
 // input
 export const input = css`
   ${borderR3};
@@ -59,6 +65,11 @@ export const input = css`
     border-color: #5d91ff;
     outline: none;
   }
+`;
+
+export const textarea = css`
+  ${input};
+  resize: none;
 `;
 
 export const button = css`
@@ -145,7 +156,6 @@ export const radioGroup = css`
     text-align: left;
     padding: 10px 0;
     border-radius: 3px;
-    color: #3c454c;
     cursor: pointer;
     position: relative;
     z-index: 1;
