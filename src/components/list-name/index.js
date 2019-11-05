@@ -20,7 +20,7 @@ const ListName = ({ filteredName, action }) => {
               {data.status}
             </span>
             <h4>{data.name}</h4>
-            <p>{rupiahFormat("Rp.", Math.abs(data.nominal))}</p>
+            <p>{rupiahFormat(Math.abs(data.nominal))}</p>
           </div>
         ) : null;
       })}

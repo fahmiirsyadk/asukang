@@ -5,8 +5,8 @@ import { DataContext } from "context/data.context";
 
 const Dashboard = () => {
   const [{ total }] = useContext(DataContext);
-  const utang = rupiahFormat("Rp.", total > 0 ? total : 0);
-  const piutang = rupiahFormat("Rp.", total < 0 ? Math.abs(total) : 0);
+  const utang = rupiahFormat(total > 0 ? total : 0);
+  const piutang = rupiahFormat(total < 0 ? Math.abs(total) : 0);
   return (
     <main style={{ padding: 20 }}>
       <div style={{ display: "flex" }}>

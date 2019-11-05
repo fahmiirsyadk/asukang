@@ -31,9 +31,9 @@ const AsideTransaction = props => {
   const filtered = filteredName(name);
 
   const onChangeNominal = e => {
-    e.target.validity.valid && e.target.value >= 0
-      ? setNominal(Number(e.target.value))
-      : setNominal("");
+    const formatNominal =
+      e.target.validity.valid && e.target.value >= 0 ? e.target.value : nominal;
+    setNominal(Number(formatNominal));
   };
 
   const handleOptionChange = e => {
@@ -154,8 +154,7 @@ const AsideTransaction = props => {
       </div>
       <div css={wrapperBtn}>
         <button css={buttonPrimaryFull} onClick={() => onConfirmation()}>
-          <span>{rupiahFormat("Rp.", nominal !== "" ? nominal : 0)}</span>{" "}
-          Proses >
+          <span>{rupiahFormat(nominal !== "" ? nominal : 0)}</span> Proses >
         </button>
         <button css={buttonPrimaryGFull} onClick={() => props.send("HOME")}>
           Batalkan

@@ -5,7 +5,7 @@ import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/data.context";
 import { getStorage } from "functions/local-storage";
 import { checkLocalStorage } from "functions/transactions";
-import { switchShortcuts } from "machines";
+import { switchShortcuts, isNewAccount } from "machines";
 import { overlay } from "./styles";
 import imageHome from "assets/images/home-cover.jpg";
 import Dashboard from "components/dashboard";
@@ -53,7 +53,8 @@ const overlayW = (state, bg) => css`
 `;
 
 const App = () => {
-  const [currentSrc, sendSrc, serviceSrc] = useMachine(switchShortcuts);
+  const [currentMenu, , serviceMenu] = useMachine(switchShortcuts);
+  const [currentAccount, , serviceAccount] = useMachine(isNewAccount);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   // side-effect
@@ -104,14 +105,15 @@ const App = () => {
             }
           ]}
         >
-          <Aside state={serviceSrc} />
+          <Aside menu={serviceMenu} account={serviceAccount} />
         </div>
         {!isTabletOrMobile && (
           <div css={[colomn(3)]}>
             <div
               css={overlayW(
-                !currentSrc.matches("home") || getStorage("id") === null,
-                currentSrc.matches("home") && getStorage("id") === null
+                !currentMenu.matches("home") || currentAccount.matches("new"),
+                currentMenu.matches("home") &&
+                  (currentAccount.matches("new") && initialState.id === null)
               )}
             ></div>
             <Dashboard />

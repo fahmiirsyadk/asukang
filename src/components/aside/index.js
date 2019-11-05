@@ -32,8 +32,9 @@ const dataShortcuts = [
   }
 ];
 
-const Profile = ({ state }) => {
-  const [{ matches }, send] = useService(state);
+const Profile = ({ menu, account }) => {
+  const [{ matches }, send] = useService(menu);
+  const [, sendAccount] = useService(account);
   const [uniq, setUniq] = useState(getStorage("id"));
   const [name, setName] = useState("");
   const [, dispatch] = useDataValue();
@@ -49,25 +50,25 @@ const Profile = ({ state }) => {
         type: "getName",
         newData: name
       });
+      sendAccount("REGISTER");
     }
   };
 
   return (
     <aside css={aside}>
-      <Shortcuts
-        state={state}
-        data={dataShortcuts}
-        mobile={!isTabletOrMobile}
-      />
+      <Shortcuts state={menu} data={dataShortcuts} mobile={!isTabletOrMobile} />
       <div id="aside-content">
         {uniq === null ? (
           <AsideOverlay>
             <div css={{ textAlign: "left !important" }}>
               <h1>Selamat datang di Asukang App</h1>
               <p>Catat utang dan piutang dengan mudah.</p>
+              <label htmlFor="initial_name">Nama lengkap: </label>
               <input
+                id="initial_name"
                 css={input}
                 inputMode="text"
+                placeholder="Eg: Fahmi irsyad khairi"
                 onChange={e => setName(e.target.value)}
               />
               <br />

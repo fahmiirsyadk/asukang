@@ -1,5 +1,20 @@
 import { Machine } from "xstate";
 
+export const isNewAccount = Machine({
+  id: "newAccount",
+  initial: "new",
+  states: {
+    new: {
+      on: {
+        REGISTER: "old"
+      }
+    },
+    old: {
+      type: "final"
+    }
+  }
+});
+
 export const transactionFlow = Machine({
   id: "transaction",
   initial: "add",
