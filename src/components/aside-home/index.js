@@ -14,7 +14,6 @@ const AsideHome = ({ send }) => {
           <img src={imgNew} alt="ilustrasi_gambar" />
           <h4>Asukang App</h4>
           <p>Welcome, {id}.</p>
-          <p>Catat utang dan piutang dengan mudah.</p>
         </div>
         <button css={buttonPrimaryFull} onClick={() => send("TRANSACTION")}>
           + New Transaction

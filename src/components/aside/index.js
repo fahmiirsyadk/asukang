@@ -4,7 +4,7 @@ import iconHome from "assets/images/home.png";
 import iconWishlist from "assets/images/wishlist.png";
 
 import { useService } from "@xstate/react";
-import { buttonPrimary } from "components/styles";
+import { buttonPrimaryFull, input } from "components/styles";
 import { aside } from "./style";
 import uuid from "functions/uuid";
 import { getStorage, setStorage } from "functions/local-storage";
@@ -62,12 +62,20 @@ const Profile = ({ state }) => {
       <div id="aside-content">
         {uniq === null ? (
           <AsideOverlay>
-            <h1>HELLO</h1>
-            <input inputMode="text" onChange={e => setName(e.target.value)} />
-            <div>
-              <button css={buttonPrimary} onClick={setUUID}>
-                MULAI >
-              </button>
+            <div css={{ textAlign: "left !important" }}>
+              <h1>Selamat datang di Asukang App</h1>
+              <p>Catat utang dan piutang dengan mudah.</p>
+              <input
+                css={input}
+                inputMode="text"
+                onChange={e => setName(e.target.value)}
+              />
+              <br />
+              <div>
+                <button css={buttonPrimaryFull} onClick={setUUID}>
+                  Mulai Sekarang
+                </button>
+              </div>
             </div>
           </AsideOverlay>
         ) : null}

@@ -7,7 +7,7 @@ import { getStorage } from "functions/local-storage";
 import { checkLocalStorage } from "functions/transactions";
 import { switchShortcuts } from "machines";
 import { overlay } from "./styles";
-
+import imageHome from "assets/images/home-cover.jpg";
 import Dashboard from "components/dashboard";
 import Aside from "components/aside";
 
@@ -33,6 +33,7 @@ const colomn = flex => css`
   flex-direction: column;
   flex-basis: 100%;
   flex: ${flex};
+  position: relative;
 `;
 
 const outerAside = css`
@@ -41,11 +42,14 @@ const outerAside = css`
   min-width: 327px;
 `;
 
-const overlayW = state => css`
+const overlayW = (state, bg) => css`
   ${overlay};
   display: ${state ? "flex" : "none"};
   user-select: none;
   z-index: 0;
+  position: absolute;
+  background-size: ${bg ? "cover" : "none"};
+  background-image: ${bg ? `url("${imageHome}")` : "none"};
 `;
 
 const App = () => {
@@ -106,7 +110,8 @@ const App = () => {
           <div css={[colomn(3)]}>
             <div
               css={overlayW(
-                !currentSrc.matches("home") || getStorage("id") === null
+                !currentSrc.matches("home") || getStorage("id") === null,
+                currentSrc.matches("home") && getStorage("id") === null
               )}
             ></div>
             <Dashboard />
