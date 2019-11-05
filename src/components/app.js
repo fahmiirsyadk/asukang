@@ -116,7 +116,8 @@ const App = () => {
           <div css={[colomn(3)]}>
             <div
               css={overlayW(
-                !currentMenu.matches("home") || currentAccount.matches("new"),
+                !currentMenu.matches("home") ||
+                  (currentAccount.matches("new") && initialState.id === null),
                 currentMenu.matches("home") &&
                   (currentAccount.matches("new") && initialState.id === null)
               )}
