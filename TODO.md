@@ -39,6 +39,7 @@
 - [ ] add clear button on input
 - [ ] add popup detail utang piutang item
 - [ ] add feature to export the data , later you can import it ( encrypted )
+- [ ] redesign confirmation page ( like gojek )
 
 # REDESIGN
 

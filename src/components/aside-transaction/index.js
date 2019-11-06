@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMachine } from "@xstate/react";
-import AsideOverlay from "components/aside-overlay";
+import AsideTransactionConfirm from "components/aside-transaction-confirm";
 import RadioSelect from "./radio";
 import {
   input,
@@ -112,93 +112,101 @@ const AsideTransaction = props => {
 
   return (
     <div style={{ padding: 20, position: "relative", height: "100%" }}>
-      <h2 style={{ marginBottom: 20 }}>Transaksi</h2>
-      <div css={{ position: "relative" }}>
-        <span css={spanSearchBox}>
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="search"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path
-              fill="currentColor"
-              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-            ></path>
-          </svg>
-        </span>
-        <input
-          type="text"
-          id="nama_input"
-          value={name}
-          css={[input, { paddingLeft: "2em" }]}
-          onChange={e => setName(e.target.value)}
-          placeholder="Tambahkan nama tujuan"
-          autoFocus
-        />
-      </div>
-      <div style={{ margin: "1em 0 " }}>
-        <label css={labelInput} htmlFor="description">
-          Deskripsi:
-        </label>
-        <textarea
-          id="description"
-          name="description"
-          rows="2"
-          onChange={e => setDesc(e.target.value)}
-          placeholder="Misal: hutang telor ke warung mbak jum"
-          css={textarea}
-        ></textarea>
-      </div>
-      <div style={{ marginBottom: 20 }}>
-        <RadioSelect
-          radioGroup={radioGroup}
-          handleOptionChange={handleOptionChange}
-          selectedOpt={selectedOpt}
-        />
-      </div>
-      <div>
-        <input
-          css={input}
-          pattern="[0-9]*"
-          inputMode="numeric"
-          onChange={onChangeNominal}
-          value={nominal}
-          placeholder="Masukkan nominal uang"
-          onKeyUp={e => (e.keyCode === 13 ? onConfirmation() : null)}
-        />
-      </div>
-      <div css={wrapperBtn}>
-        <button css={buttonPrimaryFull} onClick={() => onConfirmation()}>
-          <span css={{ color: "white", fontWeight: 700 }}>
-            {rupiahFormat(nominal !== "" ? nominal : 0)}
-          </span>{" "}
-          Proses >
-        </button>
-        <button css={buttonPrimaryGFull} onClick={() => props.send("HOME")}>
-          Batalkan
-        </button>
-      </div>
-      {current.matches("confirmation") ? (
-        <AsideOverlay>
-          <h3>Apakah anda yakin ?</h3>
-          <p>Klik kembali untuk mengganti atau membatalkan transaksi</p>
-          <React.Fragment>
-            <button
-              css={buttonPrimaryFull}
+      {current.matches("add") ? (
+        <React.Fragment>
+          <h2 style={{ marginBottom: 20 }}>Transaksi baru</h2>
+          <div css={{ position: "relative" }}>
+            <span css={spanSearchBox}>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="search"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                ></path>
+              </svg>
+            </span>
+            <input
+              type="text"
+              id="nama_input"
+              value={name}
+              css={[input, { paddingLeft: "2em" }]}
+              onChange={e => setName(e.target.value)}
+              placeholder="Tambahkan nama tujuan"
               autoFocus
-              onClick={e => preSubmitData(e)}
-            >
-              Yakin, konfirmasi
+            />
+          </div>
+          <div style={{ margin: "1em 0 " }}>
+            <label css={labelInput} htmlFor="description">
+              Deskripsi:
+            </label>
+            <textarea
+              id="description"
+              name="description"
+              rows="2"
+              onChange={e => setDesc(e.target.value)}
+              placeholder="Misal: hutang telor ke warung mbak jum"
+              css={textarea}
+            ></textarea>
+          </div>
+          <div style={{ marginBottom: 20 }}>
+            <RadioSelect
+              radioGroup={radioGroup}
+              handleOptionChange={handleOptionChange}
+              selectedOpt={selectedOpt}
+            />
+          </div>
+          <div>
+            <label css={labelInput} htmlFor="input_nominal">
+              Nominal:
+            </label>
+            <input
+              id="input_nominal"
+              css={input}
+              pattern="[0-9]*"
+              inputMode="numeric"
+              onChange={onChangeNominal}
+              value={nominal}
+              placeholder="Masukkan nominal uang"
+              onKeyUp={e => (e.keyCode === 13 ? onConfirmation() : null)}
+            />
+          </div>
+          <div css={wrapperBtn}>
+            <button css={buttonPrimaryFull} onClick={() => onConfirmation()}>
+              Proses{" "}
+              <span
+                css={{
+                  padding: "5px 8px",
+                  backgroundColor: "#4493ef",
+                  borderRadius: "3px",
+                  color: "white",
+                  fontWeight: 700
+                }}
+              >
+                {rupiahFormat(nominal !== "" ? nominal : 0)}
+              </span>
             </button>
-            <button css={buttonPrimaryGFull} onClick={() => send("BACK")}>
-              Kembali
+            <button css={buttonPrimaryGFull} onClick={() => props.send("HOME")}>
+              Batalkan
             </button>
-          </React.Fragment>
-        </AsideOverlay>
+          </div>
+        </React.Fragment>
+      ) : current.matches("confirmation") ? (
+        <AsideTransactionConfirm
+          name={name}
+          selectedOpt={selectedOpt}
+          uuid={getStorage("id")}
+          nominal={nominal}
+          desc={desc}
+          submit={e => preSubmitData(e)}
+          back={() => send("BACK")}
+        />
       ) : null}
     </div>
   );

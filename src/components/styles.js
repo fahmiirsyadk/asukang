@@ -44,7 +44,7 @@ export const modal = css`
 export const labelInput = css`
   margin: 5px 0;
   display: inline-block;
-  color: #3c454c;
+  color: #626b71;
 `;
 
 // input

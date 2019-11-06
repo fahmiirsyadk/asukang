@@ -4,7 +4,7 @@ import iconHome from "assets/images/home.png";
 import iconWishlist from "assets/images/wishlist.png";
 
 import { useService } from "@xstate/react";
-import { buttonPrimaryFull, input } from "components/styles";
+import { buttonPrimaryFull, input, labelInput } from "components/styles";
 import { aside } from "./style";
 import uuid from "functions/uuid";
 import { getStorage, setStorage } from "functions/local-storage";
@@ -41,7 +41,7 @@ const Profile = ({ menu, account }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   const setUUID = () => {
-    const id = uuid(name);
+    const id = uuid();
     if (name.length > 0) {
       setStorage("id", id);
       setStorage("name", name);
@@ -63,7 +63,9 @@ const Profile = ({ menu, account }) => {
             <div css={{ textAlign: "left !important" }}>
               <h1>Selamat datang di Asukang App</h1>
               <p>Catat utang dan piutang dengan mudah.</p>
-              <label htmlFor="initial_name">Nama lengkap: </label>
+              <label htmlFor="initial_name" css={labelInput}>
+                Nama lengkap:{" "}
+              </label>
               <input
                 id="initial_name"
                 css={input}
