@@ -13,6 +13,9 @@ export const review = css`
   h6 {
     color: #616d7d;
   }
+  #thumbnail {
+    width: 80px;
+  }
 `;
 
 export const reviewDesc = css`
@@ -40,5 +43,32 @@ export const reviewBtn = css`
   padding-top: 2em;
   button {
     margin: 0px 0 10px 0;
+  }
+`;
+
+export const reviewCategory = css`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+  text-align: center;
+  height: 100px;
+`;
+
+export const reviewCategoryItem = selected => css`
+  font-weight: bold;
+  font-size: 14px;
+  img {
+    transition: 0.3s cubic-bezier(0.18, 1.1, 1, 1);
+    -webkit-user-drag: none;
+    height: 30px;
+    margin-bottom: 5px;
+  }
+  span {
+    color: ${selected ? "#1b2d40" : "#616d7d !important"};
+  }
+  &:hover > img {
+    transform: translateY(-8px);
   }
 `;
