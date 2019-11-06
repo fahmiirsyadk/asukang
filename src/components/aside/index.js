@@ -56,16 +56,12 @@ const Profile = ({ menu, account }) => {
 
   return (
     <aside css={aside}>
-      {matches("home") && uniq !== null ? (
+      {uniq !== null && (
         <Shortcuts
           state={menu}
           data={dataShortcuts}
           mobile={!isTabletOrMobile}
         />
-      ) : (
-        <button onClick={() => window.location.reload()}>
-          Click here to register
-        </button>
       )}
       <div id="aside-content">
         {uniq === null ? (
