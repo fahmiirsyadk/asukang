@@ -57,9 +57,9 @@ const AsideTransactionConfirm = props => {
         </div>
       </div>
       <div css={reviewBtn}>
-        <div css={reviewCategory}>
+        <ul css={reviewCategory}>
           {dataCategory.map(({ label, icon }) => (
-            <div
+            <li
               css={reviewCategoryItem(selectedCategory === label)}
               label={label}
               key={label}
@@ -70,9 +70,9 @@ const AsideTransactionConfirm = props => {
             >
               <img src={icon} alt={label}></img>
               <span>{label}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
         <button css={buttonPrimaryFull} onClick={submit}>
           Konfimasi dan bayar
         </button>

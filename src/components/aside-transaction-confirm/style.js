@@ -54,6 +54,7 @@ export const reviewCategory = css`
   justify-content: space-between;
   text-align: center;
   height: 100px;
+  list-style: none;
 `;
 
 export const reviewCategoryItem = selected => css`
