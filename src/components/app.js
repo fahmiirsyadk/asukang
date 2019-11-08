@@ -113,7 +113,7 @@ const App = () => {
           <Aside menu={serviceMenu} account={serviceAccount} />
         </div>
         {!isTabletOrMobile && (
-          <div css={[colomn(3)]}>
+          <div css={[colomn(2.5)]}>
             <div
               css={overlayW(
                 !currentMenu.matches("home") ||

@@ -17,19 +17,19 @@ import note from "assets/images/note.png";
 
 const dataCategory = [
   {
-    label: "money",
+    label: "umum",
     icon: money
   },
   {
-    label: "education",
+    label: "edukasi",
     icon: edu
   },
   {
-    label: "food",
+    label: "konsumsi",
     icon: food
   },
   {
-    label: "shop",
+    label: "belanja",
     icon: shop
   },
   {
