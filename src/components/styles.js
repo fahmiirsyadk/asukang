@@ -106,13 +106,13 @@ export const buttonPrimaryG = css`
 
 export const buttonPrimaryFull = css`
   ${buttonPrimary};
-  padding: 10px 0;
+  padding: 12px 0;
   width: 100%;
 `;
 
 export const buttonPrimaryGFull = css`
   ${buttonPrimaryG};
-  padding: 10px 0;
+  padding: 12px 0;
   width: 100%;
 `;
 
