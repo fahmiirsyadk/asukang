@@ -12,7 +12,7 @@ const ListName = ({ filteredName, action }) => {
           <div
             css={{ position: "Relative" }}
             key={i}
-            onClick={() => action(data.name)}
+            onClick={() => action(data)}
           >
             <span
               css={[isUtang ? notificationBoxRed : notificationBoxGreen, badge]}
@@ -21,6 +21,9 @@ const ListName = ({ filteredName, action }) => {
             </span>
             <h4>{data.name}</h4>
             <p>{rupiahFormat(Math.abs(data.nominal))}</p>
+            <p css={{ marginTop: 10, fontSize: 12, color: "#616d7d" }}>
+              Total transaksi {data.transactions.length}
+            </p>
           </div>
         ) : null;
       })}

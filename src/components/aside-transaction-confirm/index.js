@@ -85,14 +85,3 @@ const AsideTransactionConfirm = props => {
 };
 
 export default AsideTransactionConfirm;
-
-/**
- * TODO:
- * - Add Name as title
- * - Add description
- * - Add nominal
- * - add text ( berhutang / pituang ke <name> )
- * - Add category selection
- * - Tombol batalkan
- * - Tombol konfimasi dan bayar
- */
