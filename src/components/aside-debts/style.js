@@ -24,3 +24,13 @@ export const wrapperList = css`
     text-align: center;
   }
 `;
+
+export const transactionList = css`
+  list-style: none;
+  li {
+    margin: 10px 0;
+    h5 {
+      margin-bottom: 5px;
+    }
+  }
+`;

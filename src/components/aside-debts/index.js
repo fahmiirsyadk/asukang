@@ -8,7 +8,7 @@ import {
   buttonPrimaryGFull,
   wrapperBtn
 } from "components/styles";
-import { wrapperList } from "./style";
+import { wrapperList, transactionList } from "./style";
 import { input, spanSearchBox } from "components/styles";
 import { paymentFlow } from "machines";
 import imgEmpty from "assets/images/empty.png";
@@ -20,13 +20,8 @@ const AsideDebts = () => {
   const [{ matches }, send] = useMachine(paymentFlow);
 
   const selectedName = data => {
-    const { name, description, nominal, date, status } = data;
     setDetail({
-      name: name,
-      description: description,
-      nominal: nominal,
-      date: date,
-      status: status
+      ...data
     });
     send("NEXT");
   };
@@ -41,15 +36,15 @@ const AsideDebts = () => {
             <h2 css={{ color: detail.status === "utang" ? "red" : "green" }}>
               {rupiahFormat(Math.abs(detail.nominal))}
             </h2>
-            <div>
-              <h5>Riwayat transaksi</h5>
-              <ul>
-                <li>
-                  <h5>Membeli tempe dan tahu</h5>
-                  <h4>Rp.5000,00</h4>
+            <h5>Riwayat transaksi</h5>
+            <ul css={transactionList}>
+              {detail.transactions.map((transaction, index) => (
+                <li key={index}>
+                  <h5>{transaction.description}</h5>
+                  <h4>{transaction.nominal}</h4>
                 </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
           </div>
           <div css={wrapperBtn}>
             <button css={buttonPrimaryFull} onClick={() => send("NEXT")}>
