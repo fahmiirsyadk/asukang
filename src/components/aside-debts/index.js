@@ -3,12 +3,21 @@ import { useMachine } from "@xstate/react";
 import ListName from "components/list-name";
 import { filteredName } from "functions/transactions";
 import rupiahFormat from "functions/numeric";
+import { pipe, slice, map } from "functions/utils";
 import {
   buttonPrimaryFull,
   buttonPrimaryGFull,
-  wrapperBtn
+  wrapperBtn,
+  notificationBoxRed,
+  notificationBoxGreen
 } from "components/styles";
-import { wrapperList, transactionList } from "./style";
+import {
+  wrapperList,
+  transactionList,
+  subTitle,
+  transactionTitle,
+  transactionItem
+} from "./style";
 import { input, spanSearchBox } from "components/styles";
 import { paymentFlow } from "machines";
 import imgEmpty from "assets/images/empty.png";
@@ -26,24 +35,79 @@ const AsideDebts = () => {
     send("NEXT");
   };
 
+  const transactionListOverview = arr =>
+    pipe(
+      slice(0, 4),
+      map(transaction => {
+        return (
+          <li css={transactionItem} key={transaction.description}>
+            <div
+              css={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}
+            >
+              <h5>{transaction.description}</h5>
+              <span
+                css={
+                  transaction.status === "utang"
+                    ? notificationBoxRed
+                    : notificationBoxGreen
+                }
+              >
+                {transaction.status}
+              </span>
+            </div>
+            <div
+              css={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}
+            >
+              <h4
+                css={{
+                  color: transaction.status === "utang" ? "#ea5e9a" : "#166e75"
+                }}
+              >
+                {rupiahFormat(transaction.nominal)}
+              </h4>
+              <p css={[subTitle]}>{transaction.date}</p>
+            </div>
+          </li>
+        );
+      })
+    )(arr);
+
   return (
     <div style={{ padding: 20, position: "relative", height: "100%" }}>
       {matches("prepare") && (
         <React.Fragment>
           <h2 css={{ marginBottom: 20 }}>Detail transaksi</h2>
           <div>
-            <h4>{detail.name}</h4>
-            <h2 css={{ color: detail.status === "utang" ? "red" : "green" }}>
-              {rupiahFormat(Math.abs(detail.nominal))}
-            </h2>
-            <h5>Riwayat transaksi</h5>
-            <ul css={transactionList}>
-              {detail.transactions.map((transaction, index) => (
-                <li key={index}>
-                  <h5>{transaction.description}</h5>
-                  <h4>{transaction.nominal}</h4>
-                </li>
-              ))}
+            <div css={transactionTitle}>
+              <h4>{detail.name}</h4>
+              <h2
+                css={{
+                  color: detail.status === "utang" ? "#ea5e9a" : "#166e75"
+                }}
+              >
+                {rupiahFormat(Math.abs(detail.nominal))}
+              </h2>
+            </div>
+            <div
+              css={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}
+            >
+              <h5 css={subTitle}>Riwayat transaksi</h5>
+              <span css={[subTitle, { color: "#1b2d40" }]}>Lihat semua</span>
+            </div>
+            <ul css={[transactionList, { paddingBottom: 10 }]}>
+              {transactionListOverview(detail.transactions)}
             </ul>
           </div>
           <div css={wrapperBtn}>
