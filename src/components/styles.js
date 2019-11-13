@@ -219,3 +219,9 @@ export const spanSearchBox = css`
   pointer-events: none;
   color: #999;
 `;
+
+export const wrapperBtn = css`
+  button {
+    margin: 0px 0 10px 0;
+  }
+`;

@@ -8,7 +8,6 @@ const Shortcut = ({ action, activeTab, label, onClick, icon }) => (
     aria-label={label}
     aria-disabled="false"
     aria-selected={activeTab === label ? "true" : "false"}
-    role="tab"
     onClick={() => {
       onClick(label);
       action();

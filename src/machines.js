@@ -74,3 +74,32 @@ export const switchShortcuts = Machine({
     }
   }
 });
+
+export const paymentFlow = Machine({
+  id: "paymentFlow",
+  initial: "home",
+  states: {
+    home: {
+      on: {
+        NEXT: "prepare"
+      }
+    },
+    prepare: {
+      on: {
+        NEXT: "insert_nominal",
+        BACK: "home"
+      }
+    },
+    insert_nominal: {
+      on: {
+        BACK: "prepare",
+        NEXT: "success"
+      }
+    },
+    success: {
+      on: {
+        NEXT: "prepare"
+      }
+    }
+  }
+});

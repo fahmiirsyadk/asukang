@@ -12,10 +12,7 @@ const Shortcuts = ({ state, data, mobile }) => {
   };
 
   return (
-    <div
-      css={mobile ? [shortcuts] : [shortcuts, shortcuts__mobile]}
-      aria-label="tablist"
-    >
+    <div css={mobile ? [shortcuts] : [shortcuts, shortcuts__mobile]}>
       {data.map(child => {
         const { label, icon } = child;
         return (

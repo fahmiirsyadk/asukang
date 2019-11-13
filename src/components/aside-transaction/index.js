@@ -59,13 +59,23 @@ const AsideTransaction = props => {
 
   const submitData = e => {
     e.preventDefault();
-    const date = new Date();
+
+    const newDate = new Date();
+    const date = `${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}`;
     const dataForm = {
       name: name,
-      description: desc,
+      verified: false,
+      initialDate: date,
+      status: selectedOpt,
       nominal: Number(nominal),
-      date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
-      status: selectedOpt
+      transactions: [
+        {
+          nominal: Number(nominal),
+          description: desc,
+          status: selectedOpt,
+          date: date
+        }
+      ]
     };
     if (filtered.length > 0) {
       const newNominal = state => {
@@ -74,10 +84,18 @@ const AsideTransaction = props => {
           : filtered[0].nominal - dataForm.nominal;
       };
       const statusData = newNominal(selectedOpt) < 0 ? "piutang" : "utang";
-      const filteredData = getData.filter(el => el.name !== filtered[0].name);
+      const filteredData = getData.filter(el => el.name === filtered[0].name);
+      console.log(filteredData);
       const finalData = [
-        ...filteredData,
-        { ...dataForm, nominal: newNominal(selectedOpt), status: statusData }
+        {
+          ...dataForm,
+          nominal: newNominal(selectedOpt),
+          status: statusData,
+          transactions: [
+            ...filteredData[0].transactions,
+            ...dataForm.transactions
+          ]
+        }
       ];
       dispatch({
         type: "getDataState",
