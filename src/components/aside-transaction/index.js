@@ -13,6 +13,7 @@ import {
 } from "components/styles";
 import { getStorage } from "functions/local-storage";
 import rupiahFormat from "functions/numeric";
+import { pipe } from "functions/utils";
 import {
   sendDataTransaction,
   sendDataActivities,
@@ -60,8 +61,9 @@ const AsideTransaction = props => {
   const submitData = e => {
     e.preventDefault();
 
-    const newDate = new Date();
-    const date = `${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}`;
+    const date = pipe(x => `${x.getFullYear()}-${x.getMonth()}-${x.getDate()}`)(
+      new Date()
+    );
     const dataForm = {
       name: name,
       verified: false,
@@ -83,14 +85,14 @@ const AsideTransaction = props => {
           ? filtered[0].nominal + dataForm.nominal
           : filtered[0].nominal - dataForm.nominal;
       };
-      const statusData = newNominal(selectedOpt) < 0 ? "piutang" : "utang";
       const filteredData = getData.filter(el => el.name === filtered[0].name);
       console.log(filteredData);
       const finalData = [
         {
           ...dataForm,
+          initialDate: filteredData[0].initialDate,
           nominal: newNominal(selectedOpt),
-          status: statusData,
+          status: newNominal(selectedOpt) < 0 ? "piutang" : "utang",
           transactions: [
             ...filteredData[0].transactions,
             ...dataForm.transactions

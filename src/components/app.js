@@ -3,6 +3,7 @@ import { Global, css } from "@emotion/core";
 import { useMediaQuery } from "react-responsive";
 import { useMachine } from "@xstate/react";
 import { DataProvider } from "context/data.context";
+import useProfunctorState from "";
 import { getStorage } from "functions/local-storage";
 import { checkLocalStorage } from "functions/transactions";
 import { switchShortcuts, isNewAccount } from "machines";
@@ -119,7 +120,7 @@ const App = () => {
                 !currentMenu.matches("home") ||
                   (currentAccount.matches("new") && initialState.id === null),
                 currentMenu.matches("home") &&
-                  (currentAccount.matches("new") && initialState.id === null)
+                  currentAccount.matches("new") && initialState.id === null
               )}
             ></div>
             <Dashboard />
