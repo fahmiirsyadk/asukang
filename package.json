@@ -4,9 +4,6 @@
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.0.21",
-    "@hookstate/core": "^1.2.2",
-    "@hookstate/persistence": "^1.2.2",
-    "@staltz/use-profunctor-state": "^1.2.0",
     "@xstate/react": "^0.7.1",
     "customize-cra": "^0.8.0",
     "react": "^16.9.0",
