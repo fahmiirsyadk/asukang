@@ -1,4 +1,8 @@
 const rupiahFormat = num =>
-  String("Rp.") + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  new Intl.NumberFormat("id", {
+    style: "currency",
+    currency: "IDR",
+    currencyDisplay: "symbol"
+  }).format(num);
 
 export default rupiahFormat;
